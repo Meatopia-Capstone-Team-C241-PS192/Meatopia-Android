@@ -10,4 +10,26 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="meatopia_shop">Meatopia Shop</string>
+    <string name="at_your_door">at your door</string>
+    <string name="the_easiest_way_to_buy_your_meat_shopping">The easiest way to buy your Meat shopping</string>
+    <string name="get_started">Get Started</string>
+    <string name="sign_in">Sign In</string>
+    <string name="invalid_email">Invalid email address</string>
+    <string name="invalid_password">Password less than 8 characters</string>
+    <string name="name">Name</string>
+    <string name="enter_user_name">Enter user name</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter password</string>
+    <string name="don_t_have_an_account">Don’t have an account ?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="meat_name">Meat name</string>
+    <string name="descriptions">Descriptions</string>
+    <string name="meat">Meat</string>
+    <string name="buy_now">Buy now</string>
+    <string name="my_cart">My Cart</string>
+    <string name="_1kg_price">1Kg.Price</string>
+    <string name="rp180_000">Rp180.000</string>
+    <string name="checkout">Checkout</string>
+
 </resources>

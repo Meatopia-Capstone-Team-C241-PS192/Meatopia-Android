@@ -1,37 +1,35 @@
-package com.example.mygrocerystore.ui.gallery;
+package com.example.mygrocerystore.ui.gallery
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.mygrocerystore.databinding.FragmentGalleryBinding
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+class GalleryFragment : Fragment() {
+    private var binding: FragmentGalleryBinding? = null
 
-import com.example.mygrocerystore.databinding.FragmentGalleryBinding;
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        val galleryViewModel =
+            ViewModelProvider(this).get(GalleryViewModel::class.java)
 
-public class GalleryFragment extends Fragment {
+        binding = FragmentGalleryBinding.inflate(inflater, container, false)
+        val root: View = binding!!.root
 
-    private FragmentGalleryBinding binding;
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        GalleryViewModel galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
-
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        final TextView textView = binding.textGallery;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+        val textView = binding!!.textGallery
+        galleryViewModel.text.observe(viewLifecycleOwner) { text: CharSequence? ->
+            textView.text = text
+        }
+        return root
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }
