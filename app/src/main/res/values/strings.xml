@@ -17,6 +17,7 @@
     <string name="sign_in">Sign In</string>
     <string name="invalid_email">Invalid email address</string>
     <string name="invalid_password">Password less than 8 characters</string>
+    <string name="invalid_data_empty">Data is empty</string>
     <string name="name">Name</string>
     <string name="enter_user_name">Enter user name</string>
     <string name="password">Password</string>
@@ -24,6 +25,8 @@
     <string name="don_t_have_an_account">Don’t have an account ?</string>
     <string name="sign_up">Sign up</string>
     <string name="meat_name">Meat name</string>
+    <string name="save">Save</string>
+    <string name="result">Result</string>
     <string name="descriptions">Descriptions</string>
     <string name="meat">Meat</string>
     <string name="buy_now">Buy now</string>
@@ -31,5 +34,25 @@
     <string name="_1kg_price">1Kg.Price</string>
     <string name="rp180_000">Rp180.000</string>
     <string name="checkout">Checkout</string>
+    <string name="order_confirmed">Order Confirmed</string>
+    <string name="you_order_has_been_confirmed_will_be_delivered_soon">You order has been confirmed. Will be delivered soon</string>
+    <string name="profile">Profile</string>
+    <string name="sulaiman">Sulaiman</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="muhammadsulaiman8303_gmail_com">muhammadsulaiman8303@gmail.com</string>
+    <string name="phone">Phone</string>
+    <string name="_082138238284">082138238284</string>
+    <string name="address">Address</string>
+    <string name="jl_simajuntak_raja_3_no_43_pajagalan">Jl. Simajuntak raja 3 no 43 pajagalan</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="meat_quaility">Meat Quaility :</string>
+    <string name="fresh_meat">Fresh Meat</string>
+    <string name="payment">Payment</string>
+    <string name="amout_to_pay">Amout To Pay</string>
+    <string name="frozen_meat">Frozen Meat</string>
+    <string name="_1kg">1Kg</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

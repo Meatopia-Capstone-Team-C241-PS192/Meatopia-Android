@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/card_meat_cart"
+    android:id="@+id/card_meat"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -19,7 +19,7 @@
         android:paddingBottom="10dp">
 
         <ImageView
-            android:id="@+id/myp_photo_meat"
+            android:id="@+id/myc_photo_meat"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:adjustViewBounds="true"
@@ -33,7 +33,7 @@
             tools:src="@drawable/meatitsrawstate" />
 
         <TextView
-            android:id="@+id/myp_kg"
+            android:id="@+id/myc_kg"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/meat"
@@ -42,11 +42,11 @@
             android:layout_marginStart="21.5dp"
             android:layout_marginTop="19dp"
             android:fontFamily="@font/mulish_bold"
-            app:layout_constraintStart_toEndOf="@+id/myp_photo_meat"
+            app:layout_constraintStart_toEndOf="@+id/myc_photo_meat"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/myp_price_kg"
+            android:id="@+id/myc_price_kg"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20.5dp"
@@ -54,11 +54,11 @@
             android:text="@string/_1kg_price"
             android:textColor="@color/grey_200"
             android:textSize="10sp"
-            app:layout_constraintStart_toEndOf="@+id/myp_photo_meat"
-            app:layout_constraintTop_toBottomOf="@+id/myp_kg" />
+            app:layout_constraintStart_toEndOf="@+id/myc_photo_meat"
+            app:layout_constraintTop_toBottomOf="@+id/myc_kg" />
 
         <TextView
-            android:id="@+id/myp_price"
+            android:id="@+id/myc_price"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="@string/rp180_000"
@@ -67,35 +67,13 @@
             android:layout_marginTop="7dp"
             android:layout_marginStart="21.5dp"
             android:textColor="@color/purple_300"
-            app:layout_constraintStart_toEndOf="@+id/myp_photo_meat"
-            app:layout_constraintTop_toBottomOf="@+id/myp_price_kg" />
+            app:layout_constraintStart_toEndOf="@+id/myc_photo_meat"
+            app:layout_constraintTop_toBottomOf="@+id/myc_price_kg" />
 
-        <com.example.mygrocerystore.ui.itemUi.ButtonCircleLess
-            android:id="@+id/myp_button_less"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/myp_number" />
-
-        <TextView
-            android:id="@+id/myp_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/mulish_medium"
-            android:text="1"
-            android:textSize="13sp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="13dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/myp_button_add" />
-
-
-        <com.example.mygrocerystore.ui.itemUi.ButtonCircleAdd
-            android:id="@+id/myp_button_add"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+        <com.example.mygrocerystore.ui.itemUi.ButtonCircleCart
+            android:id="@+id/myc_button_cart"
+            android:layout_width="32.1dp"
+            android:layout_height="32.93dp"
             android:layout_marginEnd="23.83dp"
             android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toBottomOf="parent"

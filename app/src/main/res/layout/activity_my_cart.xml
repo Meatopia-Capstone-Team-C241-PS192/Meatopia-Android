@@ -18,12 +18,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/mulish_bold"
         android:text="@string/my_cart"
-        android:textColor="@color/black_50"
-        android:layout_marginStart="95dp"
-        android:layout_marginTop="47dp"
-        android:textSize="20sp"
+        style="@style/title_above"
         app:layout_constraintStart_toEndOf="@+id/button_back_inMyCart"
         app:layout_constraintTop_toTopOf="parent" />
 

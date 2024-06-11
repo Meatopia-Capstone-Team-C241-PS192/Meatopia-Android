@@ -7,5 +7,8 @@
         <item>@font/mulish</item>
         <item>@font/mulish_bold</item>
         <item>@font/mulish_medium</item>
+        <item>@font/poppins</item>
+        <item>@font/poppins_light</item>
+        <item>@font/poppins_medium</item>
     </array>
 </resources>
