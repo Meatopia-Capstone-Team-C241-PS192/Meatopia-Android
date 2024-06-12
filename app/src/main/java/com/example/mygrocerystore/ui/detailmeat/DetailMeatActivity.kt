@@ -1,5 +1,6 @@
 package com.example.mygrocerystore.ui.detailmeat
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.mygrocerystore.R
 import com.example.mygrocerystore.databinding.ActivityDetailMeatBinding
+import com.example.mygrocerystore.ui.paymentmeat.PaymentActivity
 
 class DetailMeatActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailMeatBinding
@@ -28,6 +30,8 @@ class DetailMeatActivity : AppCompatActivity() {
     }
 
     private fun setUpAction() {
+        binding.buttonBuyInDetail.setOnClickListener {
 
+        }
     }
 }

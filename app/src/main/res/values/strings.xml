@@ -54,5 +54,18 @@
     <string name="_1kg">1Kg</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="_12_04_2024">12/04/2024</string>
+    <string name="_12_04_2024_">12/04/2024 |</string>
+    <string name="deafult_">Default</string>
+    <string name="_11_00_12_00_wib">11.00 - 12.00 WIB</string>
+    <string name="order_arrived">Order Arrived</string>
+    <string name="shipping_address">Shipping Address</string>
+    <string name="another_address">Another Address</string>
+    <string name="total_price">Total Price</string>
+    <string name="delivery_charge">Delivery charge</string>
+    <string name="total">Total</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="_0000_0000_0000_0000">0000 0000 0000 0000</string>
+    <string name="pay_now">Pay Now</string>
 
 </resources>
