@@ -1,5 +1,6 @@
 package com.example.mygrocerystore.ui.paymentmeat
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,10 +18,14 @@ class PaymentActivity : AppCompatActivity() {
         setContentView(binding.root)
         val toolbar = supportActionBar
         toolbar?.hide()
+        setUpaction()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    private fun setUpaction() {
     }
 }
