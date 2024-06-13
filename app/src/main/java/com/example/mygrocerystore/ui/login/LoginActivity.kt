@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.mygrocerystore.MainActivity
 import com.example.mygrocerystore.R
 import com.example.mygrocerystore.databinding.ActivityLoginBinding
 import com.example.mygrocerystore.ui.detailmeat.DetailMeatActivity
@@ -31,6 +32,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setUpAction() {
-
+        binding.buttonSignInInLogin.setOnClickListener {
+            Intent(this, MainActivity::class.java).apply {
+                startActivity(this)
+            }
+        }
     }
 }

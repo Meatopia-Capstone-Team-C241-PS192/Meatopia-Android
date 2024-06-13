@@ -16,7 +16,7 @@
             android:id="@+id/buttonBack_in_detail_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="39.3dp"
+            android:layout_marginTop="18dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +33,7 @@
             android:id="@+id/buttonEdit_in_detail_profile"
             android:layout_width="29dp"
             android:layout_height="29dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="27dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

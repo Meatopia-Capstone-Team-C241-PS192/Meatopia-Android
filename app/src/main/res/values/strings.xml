@@ -7,9 +7,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_user">User Information</string>
+    <string name="menu_cart">My Cart</string>
+    <string name="menu_history">Order History</string>
     <string name="meatopia_shop">Meatopia Shop</string>
     <string name="at_your_door">at your door</string>
     <string name="the_easiest_way_to_buy_your_meat_shopping">The easiest way to buy your Meat shopping</string>
@@ -67,5 +67,9 @@
     <string name="payment_method">Payment Method</string>
     <string name="_0000_0000_0000_0000">0000 0000 0000 0000</string>
     <string name="pay_now">Pay Now</string>
+    <string name="logout">Logout</string>
+    <string name="order_history">Order History</string>
+    <string name="home">Home</string>
+    <string name="already_have_an_account">Already have an account ?</string>
 
 </resources>

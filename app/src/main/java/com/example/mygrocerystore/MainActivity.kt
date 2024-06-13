@@ -1,55 +1,66 @@
 package com.example.mygrocerystore
 
 import android.os.Bundle
-import android.view.Menu
+import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation.findNavController
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI.navigateUp
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.ui.NavigationUI.setupWithNavController
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.mygrocerystore.databinding.ActivityMainBinding
-import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
-    private var mAppBarConfiguration: AppBarConfiguration? = null
-    private var binding: ActivityMainBinding? = null
+
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var drawerIcon: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)
+        setContentView(binding.root)
 
-        setSupportActionBar(binding!!.appBarMain.toolbar)
-        binding!!.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
+        drawerLayout = binding.drawerLayout
+        drawerIcon = findViewById(R.id.drawer_icon)
+
+        drawerIcon.setOnClickListener {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START)
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
         }
-        val drawer = binding!!.drawerLayout
-        val navigationView = binding!!.navView
+
+        val navView: NavigationView = binding.navView
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = AppBarConfiguration.Builder(
-            R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.nav_user, R.id.nav_my_cart, R.id.nav_order_history
+            ), drawerLayout
         )
-            .setOpenableLayout(drawer)
-            .build()
-        val navController = findNavController(this, R.id.nav_host_fragment_content_main)
-        setupActionBarWithNavController(this, navController, mAppBarConfiguration!!)
-        setupWithNavController(navigationView, navController)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        return true
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(this, R.id.nav_host_fragment_content_main)
-        return (navigateUp(navController, mAppBarConfiguration!!)
-                || super.onSupportNavigateUp())
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
     }
 }
