@@ -30,14 +30,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Hide the support action bar
-        (activity as? MainActivity)?.hideSupportActionBar()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
-        // Show the support action bar
-        (activity as? MainActivity)?.showSupportActionBar()
     }
 }

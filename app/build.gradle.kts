@@ -51,10 +51,7 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation(libs.activity)
-<<<<<<< HEAD
     implementation(libs.annotation)
-=======
->>>>>>> 86cc375bd4d12c08bde7ce797e514426ea7dd962
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
