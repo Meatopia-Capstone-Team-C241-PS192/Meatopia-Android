@@ -12,12 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyGroceryStore"
         tools:targetApi="31">
+
         <activity
-            android:name=".ui.register.RegisterActivity"
-            android:exported="false" />
+        android:name=".ui.register.RegisterActivity"
+        android:exported="false" />
         <activity
-            android:name=".ui.camera.CameraActivity"
-            android:exported="false" />
+            android:name=".ui.login.RegisterActivity"
+            android:exported="false"
+            android:label="@string/title_activity_register" />
         <activity
             android:name=".ui.ordermeat.OderHistoryActivity"
             android:exported="false" />

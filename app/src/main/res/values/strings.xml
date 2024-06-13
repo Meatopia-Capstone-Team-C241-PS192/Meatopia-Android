@@ -70,6 +70,18 @@
     <string name="logout">Logout</string>
     <string name="order_history">Order History</string>
     <string name="home">Home</string>
-    <string name="already_have_an_account">Already have an account ?</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="name_example">"Cheguevaran"</string>
+    <string name="email_example">"cheguevaraan007@gmail.com"</string>
+    <string name="addrs_example">Input Your Address</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_an_account">Already have an account?</string>
 
 </resources>
