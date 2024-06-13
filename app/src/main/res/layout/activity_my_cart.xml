@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.mycart.MyCartActivity">
+
+    <com.example.mygrocerystore.ui.itemUi.ButtonBack
+        android:id="@+id/button_back_inMyCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39.3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/my_cart"
+        style="@style/title_above"
+        app:layout_constraintStart_toEndOf="@+id/button_back_inMyCart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_inMyCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_back_inMyCart" />
+
+    <com.example.mygrocerystore.ui.itemUi.ButtonCustom
+        android:id="@+id/button_checkout_inMyCart"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:text="@string/checkout"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginStart="39dp"
+        android:fontFamily="@font/inter_semibold"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view_inMyCart" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
