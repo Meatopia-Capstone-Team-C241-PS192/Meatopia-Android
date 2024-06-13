@@ -67,6 +67,7 @@
     <string name="payment_method">Payment Method</string>
     <string name="_0000_0000_0000_0000">0000 0000 0000 0000</string>
     <string name="pay_now">Pay Now</string>
+<<<<<<< HEAD
     <string name="title_activity_register">RegisterActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -80,5 +81,7 @@
     <string name="addrs_example">Input Your Address</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="already_have_an_account">Already have an account?</string>
+=======
+>>>>>>> 86cc375bd4d12c08bde7ce797e514426ea7dd962
 
 </resources>

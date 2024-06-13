@@ -13,6 +13,7 @@
         android:theme="@style/Theme.MyGroceryStore"
         tools:targetApi="31">
         <activity
+<<<<<<< HEAD
             android:name=".ui.register.RegisterActivity"
             android:exported="false" />
         <activity
@@ -20,6 +21,8 @@
             android:exported="false"
             android:label="@string/title_activity_register" />
         <activity
+=======
+>>>>>>> 86cc375bd4d12c08bde7ce797e514426ea7dd962
             android:name=".ui.camera.CameraActivity"
             android:exported="false" />
         <activity
