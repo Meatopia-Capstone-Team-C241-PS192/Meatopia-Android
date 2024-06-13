@@ -11,10 +11,12 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.MyGroceryStore.NoActionBar">
+    <style name="Theme.MyGroceryStore.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -35,7 +37,7 @@
         <item name="android:fontFamily">@font/mulish_bold</item>
         <item name="android:textColor">@color/black_50</item>
         <item name="android:layout_marginStart">95dp</item>
-        <item name="android:layout_marginTop">47dp</item>
+        <item name="android:layout_marginTop">27dp</item>
         <item name="android:textSize">20sp</item>
     </style>
 

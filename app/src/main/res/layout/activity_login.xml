@@ -4,13 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:fillViewport="true"
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imageViewLogoInlogin"
@@ -112,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="87dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="250dp"
             android:fontFamily="@font/mulish"
             android:gravity="start"
             android:text="@string/don_t_have_an_account"
@@ -128,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="250dp"
             android:fontFamily="@font/mulish_medium"
             android:text="@string/sign_up"
             android:textColor="@color/purple_100"

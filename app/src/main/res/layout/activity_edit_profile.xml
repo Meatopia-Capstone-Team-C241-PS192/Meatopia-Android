@@ -15,7 +15,7 @@
             android:id="@+id/buttonBack_in_edit_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="39.3dp"
+            android:layout_marginTop="18dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -189,7 +189,7 @@
             android:layout_height="34dp"
             android:text="@string/save"
             android:layout_marginTop="62dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="200dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
