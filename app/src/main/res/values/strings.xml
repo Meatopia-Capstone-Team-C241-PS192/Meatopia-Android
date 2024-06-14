@@ -16,6 +16,7 @@
     <string name="get_started">Get Started</string>
     <string name="sign_in">Sign In</string>
     <string name="invalid_email">Invalid email address</string>
+    <string name="invalid_phone">Not a valid phone number</string>
     <string name="invalid_password">Password less than 8 characters</string>
     <string name="invalid_data_empty">Data is empty</string>
     <string name="name">Name</string>
@@ -83,5 +84,11 @@
     <string name="addrs_example">Input Your Address</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="hello_chegue">Hello chegue!</string>
+    <string name="what_are_you_looking_for">What are you looking for ?</string>
+    <string name="search_keywords">Search keywords..</string>
+    <string name="make_sure_your_meat_the_highest_quality">Make sure your meat The highest quality</string>
+    <string name="scan_now">Scan Now</string>
+    <string name="featured_products">Featured products</string>
 
 </resources>

@@ -16,6 +16,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="white_50">#F5F5F5</color>
     <color name="red">#FE0A0A</color>
+    <color name="red_50">#F55959</color>
     <color name="color_forBackground">#DDDDDD</color>
 
     <color name="grey_50">#4F504E</color>

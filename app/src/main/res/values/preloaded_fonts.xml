@@ -6,8 +6,10 @@
         <item>@font/inter_semibold</item>
         <item>@font/mulish</item>
         <item>@font/mulish_bold</item>
+        <item>@font/mulish_extrabold</item>
         <item>@font/mulish_light</item>
         <item>@font/mulish_medium</item>
+        <item>@font/mulish_semibold</item>
         <item>@font/poppins</item>
         <item>@font/poppins_light</item>
         <item>@font/poppins_medium</item>

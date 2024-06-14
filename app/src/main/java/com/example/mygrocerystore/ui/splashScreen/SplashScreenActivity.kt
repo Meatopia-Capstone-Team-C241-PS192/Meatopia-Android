@@ -30,6 +30,7 @@ class SplashScreenActivity : AppCompatActivity() {
         binding.buttonGetStarted.setOnClickListener {
             Intent(this, LoginActivity::class.java).apply {
                 startActivity(this)
+                finish()
             }
         }
     }
