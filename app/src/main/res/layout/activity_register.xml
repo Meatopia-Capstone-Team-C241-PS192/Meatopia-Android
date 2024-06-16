@@ -12,6 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <com.example.mygrocerystore.ui.itemUi.ButtonBack
+            android:id="@+id/button_back_inSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/imageViewLogoInlogin"
             android:layout_width="300dp"
@@ -59,7 +67,7 @@
             <com.example.mygrocerystore.ui.itemUi.InputEmail
                 android:id="@+id/ed_login_name"
                 style="@style/CustomInputStyle"
-                android:hint="@string/name_example" />
+                android:hint="@string/input_name" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,7 +95,7 @@
             <com.example.mygrocerystore.ui.itemUi.InputEmail
                 android:id="@+id/ed_login_email"
                 style="@style/CustomInputStyle"
-                android:hint="@string/email_example" />
+                android:hint="@string/input_email" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,7 +124,7 @@
             <com.example.mygrocerystore.ui.itemUi.InputPhone
                 android:id="@+id/ed_login_phone_number"
                 style="@style/CustomInputStyle"
-                android:hint="@string/_082138238284" />
+                android:hint="@string/input_phone" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -174,7 +182,7 @@
             <com.example.mygrocerystore.ui.itemUi.InputPassword
                 android:id="@+id/ed_login_password"
                 style="@style/CustomInputStyle"
-                android:hint="@string/enter_password" />
+                android:hint="@string/input_password" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -20,7 +20,7 @@
     <string name="invalid_password">Password less than 8 characters</string>
     <string name="invalid_data_empty">Data is empty</string>
     <string name="name">Name</string>
-    <string name="enter_user_name">Enter user name</string>
+    <string name="enter_email">Enter email</string>
     <string name="password">Password</string>
     <string name="enter_password">Enter password</string>
     <string name="don_t_have_an_account">Don’t have an account ?</string>
@@ -43,7 +43,6 @@
     <string name="email">Email</string>
     <string name="muhammadsulaiman8303_gmail_com">muhammadsulaiman8303@gmail.com</string>
     <string name="phone">Phone</string>
-    <string name="_082138238284">082138238284</string>
     <string name="address">Address</string>
     <string name="jl_simajuntak_raja_3_no_43_pajagalan">Jl. Simajuntak raja 3 no 43 pajagalan</string>
     <string name="edit_profile">Edit Profile</string>
@@ -79,8 +78,6 @@
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="name_example">"Cheguevaran"</string>
-    <string name="email_example">"cheguevaraan007@gmail.com"</string>
     <string name="addrs_example">Input Your Address</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="already_have_an_account">Already have an account?</string>
@@ -90,5 +87,12 @@
     <string name="make_sure_your_meat_the_highest_quality">Make sure your meat The highest quality</string>
     <string name="scan_now">Scan Now</string>
     <string name="featured_products">Featured products</string>
+    <string name="Password_cannot_characters">Password cannot be less than 8 characters</string>
+    <string name="input_phone">Input phone</string>
+    <string name="input_password">Input password</string>
+    <string name="input_email">Input email</string>
+    <string name="input_name">Input name</string>
+    <string name="_082138238284">082138238284</string>
+    <string name="Something_wrong">Something wrong</string>
 
 </resources>

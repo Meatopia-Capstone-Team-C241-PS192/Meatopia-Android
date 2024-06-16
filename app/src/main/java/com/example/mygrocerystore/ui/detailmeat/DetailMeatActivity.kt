@@ -34,4 +34,10 @@ class DetailMeatActivity : AppCompatActivity() {
 
         }
     }
+
+    companion object {
+        const val NAMEMEAT = "name"
+        const val PRICEMEAT = "price"
+        const val PHOTOMEAT = "photo"
+    }
 }
