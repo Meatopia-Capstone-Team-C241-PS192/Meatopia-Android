@@ -3,6 +3,7 @@ package com.example.mygrocerystore.ui.home
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +11,18 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mygrocerystore.data.adapter.MeatAdapter
+import com.example.mygrocerystore.data.database.DataPreferences
+import com.example.mygrocerystore.data.modelfactory.ModelFactory
 import com.example.mygrocerystore.databinding.FragmentHomeBinding
 import com.example.mygrocerystore.ui.camera.CameraActivity
 
 class HomeFragment : Fragment() {
-    private var binding: FragmentHomeBinding? = null
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var homeViewModel: HomeViewModel
 
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
@@ -28,48 +36,55 @@ class HomeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
-        container: ViewGroup?, savedInstanceState: Bundle?
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val root: View = binding.root
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding!!.root
+        val application = requireActivity().application
+        val dataPreferences = DataPreferences(application)
+        val factory = ModelFactory.getInstance(application, dataPreferences)
+        homeViewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
 
-        val textView = binding!!.nameUserInHome
-        homeViewModel.text.observe(viewLifecycleOwner) { text: CharSequence? ->
-            textView.text = text
-        }
+        setupRecyclerView()
 
-        binding!!.buttonScan.setOnClickListener {
+
+        binding.buttonScan.setOnClickListener {
             checkCameraPermission()
         }
+
         return root
+    }
+
+    private fun setupRecyclerView() {
+        val meatAdapter = MeatAdapter()
+        homeViewModel.getListMeat.observe(viewLifecycleOwner) { pagingData ->
+            Log.d("HomeFragment", "Paging data loaded: $pagingData")
+            meatAdapter.submitData(lifecycle, pagingData)
+        }
+        binding.recyclerViewInHome.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = meatAdapter
+        }
     }
 
     private fun checkCameraPermission() {
         when {
             ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED -> {
-                // Permission is granted
                 val intent = Intent(activity, CameraActivity::class.java)
                 startActivity(intent)
             }
             shouldShowRequestPermissionRationale(android.Manifest.permission.CAMERA) -> {
-                // Provide an additional rationale to the user
-                // This would be a good place to show a dialog explaining why the permission is needed
             }
             else -> {
-                // Directly request the permission
                 requestPermissionLauncher.launch(android.Manifest.permission.CAMERA)
             }
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
+        _binding = null
     }
 }

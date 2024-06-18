@@ -1,37 +1,30 @@
 package com.example.mygrocerystore.data.response
 
-import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-
-@Parcelize
-data class MeatResponse(
-
-	@field:SerializedName("MeatResponse")
-	val meatResponse: List<MeatResponseItem?>? = null
-) : Parcelable
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class MeatResponseItem(
 
 	@field:SerializedName("quantityAvailable")
-	val quantityAvailable: String? = null,
+	val quantityAvailable: String,
 
 	@field:SerializedName("price")
-	val price: String? = null,
+	val price: String,
 
 	@field:SerializedName("imageUrl")
-	val imageUrl: String? = null,
+	val imageUrl: String,
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("description")
-	val description: String? = null,
+	val description: String,
 
 	@field:SerializedName("id")
-	val id: String? = null,
+	val id: String,
 
 	@field:SerializedName("type")
-	val type: String? = null
+	val type: String
 ) : Parcelable
