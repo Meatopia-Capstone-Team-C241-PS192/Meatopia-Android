@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.example.mygrocerystore.data.retrofit.ApiConfig
 import com.example.mygrocerystore.data.response.LoginResponse
+
 import com.example.mygrocerystore.data.response.RegisterResponse
+
 import kotlinx.coroutines.Dispatchers
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -24,6 +26,7 @@ class Repository(private val application: Application, private val dataPreferenc
         }
     }
 
+
     fun registerUser(name: String, email: String, phone: String, address: String, password: String, passwordConfirmation: String): LiveData<ThisResult<RegisterResponse>> = liveData(Dispatchers.IO) {
         emit(ThisResult.Loading)
         try {
@@ -38,3 +41,5 @@ class Repository(private val application: Application, private val dataPreferenc
         }
     }
 }
+
+

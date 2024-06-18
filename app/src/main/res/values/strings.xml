@@ -19,6 +19,7 @@
     <string name="invalid_phone">Not a valid phone number</string>
     <string name="invalid_password">Password less than 8 characters</string>
     <string name="invalid_data_empty">Data is empty</string>
+
     <string name="invalid_name">Name is empty</string>
     <string name="name">Name</string>
     <string name="enter_email">Enter email</string>
@@ -95,8 +96,10 @@
     <string name="input_name">Input name</string>
     <string name="_082138238284">082138238284</string>
     <string name="Something_wrong">Something wrong</string>
+
     <string name="Loading">Loading</string>
     <string name="fill_all_fields">Please fill all the fields</string>
     <string name="success">Success</string>
+
 
 </resources>

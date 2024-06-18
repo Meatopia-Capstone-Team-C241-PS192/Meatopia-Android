@@ -4,11 +4,17 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mygrocerystore.data.database.DataPreferences
+
 import com.example.mygrocerystore.data.database.Repository
 import com.example.mygrocerystore.ui.login.ModelLogin
 import com.example.mygrocerystore.ui.register.ModelRegister
 
-class ModelFactory(
+
+
+
+
+class ModelFactory (
+
     private val application: Application,
     private val dataPreferences: DataPreferences
 ) : ViewModelProvider.NewInstanceFactory() {
@@ -16,6 +22,7 @@ class ModelFactory(
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
+
             modelClass.isAssignableFrom(ModelLogin::class.java) ->
                 ModelLogin(dataPreferences, application) as T
 
@@ -23,6 +30,14 @@ class ModelFactory(
                 val repository = Repository(application, dataPreferences)
                 ModelRegister(repository) as T
             }
+
+
+            modelClass.isAssignableFrom(ModelLogin::class.java) ->
+                ModelLogin(
+                    dataPreferences,
+                    application
+                ) as T
+
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
@@ -38,7 +53,11 @@ class ModelFactory(
             dataPreferences: DataPreferences
         ): ModelFactory {
             return INSTANCE ?: synchronized(this) {
+
                 INSTANCE ?: ModelFactory(application, dataPreferences).also { INSTANCE = it }
+
+                INSTANCE ?:ModelFactory(application, dataPreferences).also { INSTANCE = it }
+
             }
         }
     }

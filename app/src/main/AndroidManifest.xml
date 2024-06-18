@@ -25,6 +25,12 @@
             android:name=".ui.camera.CameraActivity"
             android:exported="false"/>
 
+
+
+        <activity
+            android:name=".ui.register.RegisterActivity"
+            android:exported="false" />
+
         <activity
             android:name=".ui.ordermeat.OderHistoryActivity"
             android:exported="false" />
@@ -56,10 +62,9 @@
             android:name=".ui.login.LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
-            android:name=".ui.register.RegisterActivity"
-            android:exported="false" />
-        <activity
+
             android:name=".MainActivity"
             android:exported="false"
             android:theme="@style/Theme.MyGroceryStore.NoActionBar"

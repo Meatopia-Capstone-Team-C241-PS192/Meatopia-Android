@@ -1,5 +1,6 @@
 package com.example.mygrocerystore.ui.register
 
+
 import android.widget.Button
 import android.widget.EditText
 
@@ -157,6 +158,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 }
+
 
 
 
