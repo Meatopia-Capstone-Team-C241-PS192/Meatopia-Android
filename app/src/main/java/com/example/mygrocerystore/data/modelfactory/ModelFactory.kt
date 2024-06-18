@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mygrocerystore.data.database.DataPreferences
 import com.example.mygrocerystore.ui.home.HomeViewModel
 import com.example.mygrocerystore.ui.login.ViewModelLogin
+import com.example.mygrocerystore.data.database.Repository
+import com.example.mygrocerystore.ui.register.ModelRegister
 
-class ModelFactory(
+class ModelFactory (
     private val application: Application,
     private val dataPreferences: DataPreferences
 ) : ViewModelProvider.NewInstanceFactory() {
@@ -19,6 +21,8 @@ class ModelFactory(
                 ViewModelLogin(dataPreferences, application) as T
             modelClass.isAssignableFrom(HomeViewModel::class.java) ->
                 HomeViewModel(dataPreferences, application) as T
+            modelClass.isAssignableFrom(ModelRegister::class.java) -> 
+                ModelRegister(dataPreferences, application) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
     }

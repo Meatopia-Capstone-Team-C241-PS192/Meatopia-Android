@@ -14,39 +14,44 @@ import com.example.mygrocerystore.data.response.LoginResult
 import com.example.mygrocerystore.data.response.MeatResponseItem
 import com.example.mygrocerystore.data.retrofit.ApiConfig
 import com.example.mygrocerystore.data.retrofit.ApiService
+import com.example.mygrocerystore.data.response.RegisterResponse
 import kotlinx.coroutines.Dispatchers
 
 class Repository(private val application: Application, private val dataPreferences: DataPreferences) {
     private val apiService: ApiService = ApiConfig.getApiService()
 
-    fun login(email: String, password: String): LiveData<ThisResult<LoginResponse>> = liveData(Dispatchers.IO) {
-        emit(ThisResult.Loading)
-        try {
-            val loginRequest = LoginRequest(email, password)
-            val response = apiService.login(loginRequest)
+    fun login(email: String, password: String): LiveData<ThisResult<LoginResponse>> =
+        liveData(Dispatchers.IO) {
+            emit(ThisResult.Loading)
+            try {
+                val loginRequest = LoginRequest(email, password)
+                val response = apiService.login(loginRequest)
 
-            Log.d("Repository", "login: Raw response received - ${response.toString()}")
+                Log.d("Repository", "login: Raw response received - ${response.toString()}")
 
-            emit(ThisResult.SuccessData(response))
+                emit(ThisResult.SuccessData(response))
 
-            response?.let {
-                Log.d("Repository", "login: response - id: ${it.id}, name: ${it.name}, email: ${it.email}, role: ${it.role}, token: ${it.token}")
-                val loginResult = LoginResult(
-                    role = it.role,
-                    name = it.name,
-                    email = it.email,
-                    id = it.id,
-                    token = it.token
-                )
-                dataPreferences.setLogin(loginResult)
-            } ?: run {
-                Log.d("Repository", "login: response is null")
+                response?.let {
+                    Log.d(
+                        "Repository",
+                        "login: response - id: ${it.id}, name: ${it.name}, email: ${it.email}, role: ${it.role}, token: ${it.token}"
+                    )
+                    val loginResult = LoginResult(
+                        role = it.role,
+                        name = it.name,
+                        email = it.email,
+                        id = it.id,
+                        token = it.token
+                    )
+                    dataPreferences.setLogin(loginResult)
+                } ?: run {
+                    Log.d("Repository", "login: response is null")
+                }
+            } catch (e: Exception) {
+                emit(ThisResult.ErrorData(e.message.toString()))
+                Log.e("Repository", "login: Error - ${e.message}")
             }
-        } catch (e: Exception) {
-            emit(ThisResult.ErrorData(e.message.toString()))
-            Log.e("Repository", "login: Error - ${e.message}")
         }
-    }
 
     fun listMeat(): LiveData<PagingData<MeatResponseItem>> {
         Log.d("Repository", "listMeat: called")
@@ -59,4 +64,29 @@ class Repository(private val application: Application, private val dataPreferenc
             }
         ).liveData
     }
+
+    fun registerUser(
+        name: String,
+        email: String,
+        phone: String,
+        address: String,
+        password: String,
+        passwordConfirmation: String
+    ): LiveData<ThisResult<RegisterResponse>> = liveData(Dispatchers.IO) {
+        emit(ThisResult.Loading)
+        try {
+            val response = ApiConfig.getApiService()
+                .register(name, email, phone, address, password, passwordConfirmation)
+            if (response.success) {
+                emit(ThisResult.SuccessData(response))
+            } else {
+                emit(ThisResult.ErrorData("Registration failed: ${response.message}"))
+            }
+        } catch (e: Exception) {
+            emit(ThisResult.ErrorData(e.message.toString()))
+        }
+    }
 }
+
+
+

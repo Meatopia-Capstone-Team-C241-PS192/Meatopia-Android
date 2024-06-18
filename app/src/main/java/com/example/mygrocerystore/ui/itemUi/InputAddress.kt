@@ -1,8 +1,8 @@
 package com.example.mygrocerystore.ui.itemUi
 
 import android.content.Context
-import android.graphics.Canvas
 import android.text.Editable
+import android.graphics.Canvas
 import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
@@ -38,8 +38,8 @@ class InputAddress : AppCompatEditText {
         init()
     }
 
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        inputType = InputType.TYPE_CLASS_PHONE or InputType.TYPE_CLASS_TEXT
     }
 }
