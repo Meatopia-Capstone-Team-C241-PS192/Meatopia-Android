@@ -14,6 +14,7 @@ import com.example.mygrocerystore.data.response.LoginResult
 import com.example.mygrocerystore.data.response.MeatResponseItem
 import com.example.mygrocerystore.data.retrofit.ApiConfig
 import com.example.mygrocerystore.data.retrofit.ApiService
+import com.example.mygrocerystore.data.response.RegisterResponse
 import kotlinx.coroutines.Dispatchers
 
 class Repository(private val application: Application, private val dataPreferences: DataPreferences) {
@@ -58,5 +59,20 @@ class Repository(private val application: Application, private val dataPreferenc
                 MeatPage(dataPreferences, apiService)
             }
         ).liveData
+
+    fun registerUser(name: String, email: String, phone: String, address: String, password: String, passwordConfirmation: String): LiveData<ThisResult<RegisterResponse>> = liveData(Dispatchers.IO) {
+        emit(ThisResult.Loading)
+        try {
+            val response = ApiConfig.getApiService().register(name, email, phone, address, password, passwordConfirmation)
+            if (response.success) {
+                emit(ThisResult.SuccessData(response))
+            } else {
+                emit(ThisResult.ErrorData("Registration failed: ${response.message}"))
+            }
+        } catch (e: Exception) {
+            emit(ThisResult.ErrorData(e.message.toString()))
+        }
     }
 }
+
+
