@@ -5,8 +5,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class LoginResult (
-    val role: String? = null,
-    val name: String? = null,
     val id: String? = null,
-    val email: String? = null
+    val name: String? = null,
+    val email: String? = null,
+    val role: String? = null,
+    val token: String? = null
 ) : Parcelable

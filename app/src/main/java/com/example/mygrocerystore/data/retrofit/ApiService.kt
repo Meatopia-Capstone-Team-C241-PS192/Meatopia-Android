@@ -1,8 +1,12 @@
 package com.example.mygrocerystore.data.retrofit
 
+import com.example.mygrocerystore.data.response.LoginRequest
 import com.example.mygrocerystore.data.response.LoginResponse
+import com.example.mygrocerystore.data.response.MeatResponseItem
+import okhttp3.RequestBody
+import retrofit2.Response
+import retrofit2.http.*
 import com.example.mygrocerystore.data.response.MeatResponse
-
 import com.example.mygrocerystore.data.response.RegisterResponse
 import okhttp3.RequestBody
 import retrofit2.http.Field
@@ -12,18 +16,18 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 
-
-
-
-
 interface ApiService {
-    @Multipart
     @POST("login")
     suspend fun login(
-        @Part("email") email: RequestBody,
-        @Part("password") password: RequestBody
+        @Body loginRequest: LoginRequest
     ): LoginResponse
 
+    @GET("meats")
+    suspend fun getMeat(
+        @Header("Authorization") token: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int
+    ): Response<List<MeatResponseItem>>
 
     @FormUrlEncoded
     @POST("register")
@@ -35,7 +39,6 @@ interface ApiService {
         @Field("password") password: String,
         @Field("password_confirmation") confPassword: String
     ): RegisterResponse
-
 
     @GET("meat")
     suspend fun getMeatResponse(): MeatResponse

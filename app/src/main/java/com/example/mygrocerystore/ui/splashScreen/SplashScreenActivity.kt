@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -18,8 +19,9 @@ import com.example.mygrocerystore.ui.login.LoginActivity
 
 class SplashScreenActivity : AppCompatActivity() {
     private lateinit var dataLoginPreferences: DataPreferences
-    private lateinit var loginModel: LoginResult
+    private var loginModel: LoginResult? = null
     private lateinit var binding: ActivitySplashScreenBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -37,19 +39,22 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun setSkip() {
         dataLoginPreferences = DataPreferences(this)
-        loginModel = dataLoginPreferences.getLogin()
-        Handler(Looper.getMainLooper()).postDelayed({
-            if (loginModel.name != null && loginModel.role != null && loginModel.id != null) {
-                Intent(this, MainActivity::class.java).apply {
-                    startActivity(this)
-                    finish()
+        val user = dataLoginPreferences.getUser()
+        if (user != null) {
+            loginModel = user
+                if (loginModel!!.name != null && loginModel!!.id != null) {
+                    Intent(this, MainActivity::class.java).apply {
+                        startActivity(this)
+                        finish()
+                    }
+                } else {
+                    Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
                 }
-            } else {
-
-                Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
-            }
-        }, _DURATION)
+        } else {
+            Log.d("SplashScreenActivity", "No user data found")
+        }
     }
+
 
     private fun setUpAction() {
         binding.buttonGetStarted.setOnClickListener {
@@ -59,9 +64,4 @@ class SplashScreenActivity : AppCompatActivity() {
             }
         }
     }
-
-    companion object {
-        private const val _DURATION = 3000L
-    }
-
 }

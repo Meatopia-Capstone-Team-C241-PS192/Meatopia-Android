@@ -42,8 +42,9 @@
             android:layout_marginStart="21.5dp"
             android:layout_marginTop="19dp"
             android:fontFamily="@font/mulish_bold"
-            app:layout_constraintStart_toEndOf="@+id/myc_photo_meat"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@id/myc_photo_meat"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Meat" />
 
         <TextView
             android:id="@+id/myc_price_kg"
@@ -54,8 +55,9 @@
             android:text="@string/_1kg_price"
             android:textColor="@color/grey_200"
             android:textSize="10sp"
-            app:layout_constraintStart_toEndOf="@+id/myc_photo_meat"
-            app:layout_constraintTop_toBottomOf="@+id/myc_name_meat" />
+            app:layout_constraintStart_toEndOf="@id/myc_photo_meat"
+            app:layout_constraintTop_toBottomOf="@id/myc_name_meat"
+            tools:text="1 kg" />
 
         <TextView
             android:id="@+id/myc_price"
@@ -67,8 +69,9 @@
             android:layout_marginTop="7dp"
             android:layout_marginStart="21.5dp"
             android:textColor="@color/purple_300"
-            app:layout_constraintStart_toEndOf="@+id/myc_photo_meat"
-            app:layout_constraintTop_toBottomOf="@+id/myc_price_kg" />
+            app:layout_constraintStart_toEndOf="@id/myc_photo_meat"
+            app:layout_constraintTop_toBottomOf="@id/myc_price_kg"
+            tools:text="Rp 180.000" />
 
         <com.example.mygrocerystore.ui.itemUi.ButtonCircleCart
             android:id="@+id/myc_button_cart"

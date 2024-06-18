@@ -21,7 +21,7 @@ import com.example.mygrocerystore.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var modelLogin: ModelLogin
+    private lateinit var modelLogin: ViewModelLogin
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -42,10 +42,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun accommodating(activity: AppCompatActivity): ModelLogin {
+    private fun accommodating(activity: AppCompatActivity): ViewModelLogin {
         val loginPreferences = DataPreferences(activity.application)
         val factory = ModelFactory.getInstance(activity.application, loginPreferences)
-        return ViewModelProvider(activity, factory)[ModelLogin::class.java]
+        return ViewModelProvider(activity, factory)[ViewModelLogin::class.java]
     }
 
     private fun setUpAction() {
@@ -69,15 +69,13 @@ class LoginActivity : AppCompatActivity() {
         modelLogin.loginUser(email, password)
             .observe(this@LoginActivity) { result ->
                 when (result) {
-                    is ThisResult.Loading -> {
-                        // Tampilkan loading
-                    }
                     is ThisResult.SuccessData -> {
                         Toast.makeText(
                             this@LoginActivity,
                             getString(R.string.welcome),
                             Toast.LENGTH_SHORT
                         ).show()
+                        Log.d("TAG", "dataLoginVerification: ${result.data}")
                         navigateToHome(result.data)
                     }
                     is ThisResult.ErrorData -> {
@@ -87,6 +85,8 @@ class LoginActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
                     }
+
+                    else -> {}
                 }
             }
     }
@@ -101,11 +101,16 @@ class LoginActivity : AppCompatActivity() {
 
     private fun saveDataLogin(data: LoginResponse) {
         val dataPreference = DataPreferences(this)
-        val loginResult = data.loginResult
         val loginModel = LoginResult(
-            name = loginResult?.name, id = loginResult?.id, role = loginResult?.role
+            name = data.name,
+            id = data.id,
+            token = data.token,
+            role = data.role,
+            email = data.email
         )
+        Log.d("TAG", "saveDataLogin: $loginModel")
         dataPreference.setLogin(loginModel)
     }
+
 
 }

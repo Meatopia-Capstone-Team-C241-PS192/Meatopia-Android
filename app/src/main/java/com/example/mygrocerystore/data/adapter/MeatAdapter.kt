@@ -2,6 +2,7 @@ package com.example.mygrocerystore.data.adapter
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,8 +32,12 @@ class MeatAdapter : PagingDataAdapter<MeatResponseItem, MeatAdapter.ListViewHold
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val data = getItem(position)
+        Log.d("MeatAdapter", "onBindViewHolder called for position: $position, data: $data")
         if (data != null) {
+            Log.d("MeatAdapter", "Data: $data")
             holder.bind(meat = data)
+        } else {
+            Log.d("MeatAdapter", "No data")
         }
     }
 
@@ -40,15 +45,17 @@ class MeatAdapter : PagingDataAdapter<MeatResponseItem, MeatAdapter.ListViewHold
         RecyclerView.ViewHolder(binding.root) {
         fun bind(meat: MeatResponseItem) {
             with(binding) {
+                Log.d("MeatAdapter", "Binding data: $meat")
                 Glide.with(itemView)
                     .load(meat.imageUrl)
                     .into(mycPhotoMeat)
                 mycNameMeat.text = meat.name
                 mycPrice.text = meat.price
                 binding.cardMeat.setOnClickListener {
+                    Log.d("MeatAdapter", "Item clicked: $meat")
                     val intent = Intent(itemView.context, DetailMeatActivity::class.java).apply {
                         putExtra(DetailMeatActivity.NAMEMEAT, meat.name)
-                        putExtra(DetailMeatActivity.PRICEMEAT, meat.description)
+                        putExtra(DetailMeatActivity.PRICEMEAT, meat.price)
                         putExtra(DetailMeatActivity.PHOTOMEAT, meat.imageUrl)
                     }
                     val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
@@ -61,6 +68,7 @@ class MeatAdapter : PagingDataAdapter<MeatResponseItem, MeatAdapter.ListViewHold
             }
         }
     }
+
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MeatResponseItem>() {
