@@ -5,10 +5,12 @@ import com.example.mygrocerystore.data.response.LoginResponse
 import com.example.mygrocerystore.data.response.MeResponse
 import com.example.mygrocerystore.data.response.MeatResponseItem
 import com.example.mygrocerystore.data.response.PredictResponse
+import com.example.mygrocerystore.data.response.RegisterRequest
 import retrofit2.Response
 import retrofit2.http.*
 import com.example.mygrocerystore.data.response.RegisterResponse
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -35,16 +37,18 @@ interface ApiService {
         @Query("size") size: Int
     ): List<MeatResponseItem>
 
-    @FormUrlEncoded
+    @Multipart
     @POST("users")
     suspend fun register(
-        @Field("name") name: String,
-        @Field("email") email: String,
-        @Field("phone") phone: String,
-        @Field("address") address: String,
-        @Field("password") password: String,
-        @Field("password_confirmation") confPassword: String
-    ): RegisterResponse
+        @Part("name") name: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("phone") phone: RequestBody,
+        @Part("address") address: RequestBody,
+        @Part("password") password: RequestBody,
+        @Part("confPassword") confPassword: RequestBody,
+        @Part("role") role: RequestBody
+    ): Response<RegisterResponse>
+
 
     @Multipart
     @POST("predict")

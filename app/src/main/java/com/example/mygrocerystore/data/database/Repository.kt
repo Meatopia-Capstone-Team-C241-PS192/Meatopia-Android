@@ -19,6 +19,8 @@ import com.example.mygrocerystore.data.retrofit.ApiService
 import com.example.mygrocerystore.data.response.RegisterResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
 import retrofit2.HttpException
 
 class Repository(private val application: Application, private val dataPreferences: DataPreferences) {
@@ -109,27 +111,47 @@ class Repository(private val application: Application, private val dataPreferenc
         ).flow
     }
 
-    fun registerUser(
+    fun register(
         name: String,
         email: String,
         phone: String,
         address: String,
         password: String,
-        passwordConfirmation: String
+        confPassword: String,
+        role: String
     ): LiveData<ThisResult<RegisterResponse>> = liveData(Dispatchers.IO) {
         emit(ThisResult.Loading)
         try {
-            val response = ApiConfig.getApiService()
-                .register(name, email, phone, address, password, passwordConfirmation)
-            if (response.success) {
-                emit(ThisResult.SuccessData(response))
+            // Buat RequestBody untuk setiap field
+            val nameBody = RequestBody.create("text/plain".toMediaTypeOrNull(), name)
+            val emailBody = RequestBody.create("text/plain".toMediaTypeOrNull(), email)
+            val phoneBody = RequestBody.create("text/plain".toMediaTypeOrNull(), phone)
+            val addressBody = RequestBody.create("text/plain".toMediaTypeOrNull(), address)
+            val passwordBody = RequestBody.create("text/plain".toMediaTypeOrNull(), password)
+            val confPasswordBody = RequestBody.create("text/plain".toMediaTypeOrNull(), confPassword)
+            val roleBody = RequestBody.create("text/plain".toMediaTypeOrNull(), role)
+
+            val response = apiService.register(
+                nameBody, emailBody, phoneBody, addressBody, passwordBody, confPasswordBody, roleBody
+            )
+
+            if (response.isSuccessful) {
+                response.body()?.let {
+                    emit(ThisResult.SuccessData(it))
+                } ?: run {
+                    emit(ThisResult.ErrorData("Response body is null"))
+                }
             } else {
-                emit(ThisResult.ErrorData("Registration failed: ${response.message}"))
+                Log.e("Repository", "register: HTTP ${response.code()} - ${response.message()}")
+                emit(ThisResult.ErrorData("HTTP ${response.code()} ${response.message()}"))
             }
         } catch (e: Exception) {
             emit(ThisResult.ErrorData(e.message.toString()))
+            Log.e("Repository", "register: Exception - ${e.message}", e)
         }
     }
+
+
 }
 
 

@@ -7,7 +7,7 @@ import com.example.mygrocerystore.data.database.DataPreferences
 import com.example.mygrocerystore.data.database.Repository
 import com.example.mygrocerystore.ui.login.ViewModelLogin
 import com.example.mygrocerystore.ui.profile.ViewModelDetailProfile
-import com.example.mygrocerystore.ui.register.ModelRegister
+import com.example.mygrocerystore.ui.register.ViewModelRegister
 
 class ModelFactory(
     private val application: Application,
@@ -22,8 +22,8 @@ class ModelFactory(
                 ViewModelLogin(dataPreferences, application) as T
             modelClass.isAssignableFrom(HomeViewModel::class.java) ->
                 HomeViewModel(dataPreferences, application) as T
-            modelClass.isAssignableFrom(ModelRegister::class.java) ->
-                ModelRegister(dataPreferences, application) as T
+            modelClass.isAssignableFrom(ViewModelRegister::class.java) ->
+                ViewModelRegister(dataPreferences, application) as T
             modelClass.isAssignableFrom(ViewModelDetailProfile::class.java) ->
                 ViewModelDetailProfile(application, repository, dataPreferences) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
