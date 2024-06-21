@@ -1,5 +1,6 @@
 package com.example.mygrocerystore.ui.editprofile
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -33,7 +34,12 @@ class EditProfileActivity : AppCompatActivity() {
     private fun setUpAction() {
         binding.buttonBackInEditProfile.setOnClickListener {
             Intent(this, DetailProfileActivity::class.java).apply {
-                startActivity(this)
+                val options = ActivityOptions.makeCustomAnimation(
+                    this@EditProfileActivity,
+                    R.anim.anim_none,
+                    R.anim.anim_none
+                )
+                startActivity(this, options.toBundle())
             }
         }
     }

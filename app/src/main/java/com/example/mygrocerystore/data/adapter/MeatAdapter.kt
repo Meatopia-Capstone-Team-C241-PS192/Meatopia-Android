@@ -50,13 +50,16 @@ class MeatAdapter : PagingDataAdapter<MeatResponseItem, MeatAdapter.ListViewHold
                     .load(meat.imageUrl)
                     .into(mycPhotoMeat)
                 mycNameMeat.text = meat.name
-                mycPrice.text = meat.price
+                mycPrice.text = "Rp ${meat.price}"
                 binding.cardMeat.setOnClickListener {
                     Log.d("MeatAdapter", "Item clicked: $meat")
                     val intent = Intent(itemView.context, DetailMeatActivity::class.java).apply {
                         putExtra(DetailMeatActivity.NAMEMEAT, meat.name)
                         putExtra(DetailMeatActivity.PRICEMEAT, meat.price)
                         putExtra(DetailMeatActivity.PHOTOMEAT, meat.imageUrl)
+                        putExtra(DetailMeatActivity.DESCRIPTIONMEAT, meat.description)
+                        putExtra(DetailMeatActivity.TYPEMEAT, meat.type)
+                        putExtra(DetailMeatActivity.QUANTITYMEAT, meat.quantityAvailable)
                     }
                     val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                         itemView.context as Activity,
@@ -69,18 +72,17 @@ class MeatAdapter : PagingDataAdapter<MeatResponseItem, MeatAdapter.ListViewHold
         }
     }
 
-
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MeatResponseItem>() {
             override fun areItemsTheSame(oldItem: MeatResponseItem, newItem: MeatResponseItem): Boolean {
-                return oldItem == newItem
+                return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(
                 oldItem: MeatResponseItem,
                 newItem: MeatResponseItem
             ): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem == newItem
             }
         }
     }

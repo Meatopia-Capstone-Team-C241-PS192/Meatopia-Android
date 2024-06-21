@@ -1,28 +1,31 @@
 package com.example.mygrocerystore.data.modelfactory
-
+import HomeViewModel
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mygrocerystore.data.database.DataPreferences
-import com.example.mygrocerystore.ui.home.HomeViewModel
-import com.example.mygrocerystore.ui.login.ViewModelLogin
 import com.example.mygrocerystore.data.database.Repository
+import com.example.mygrocerystore.ui.login.ViewModelLogin
+import com.example.mygrocerystore.ui.profile.ViewModelDetailProfile
 import com.example.mygrocerystore.ui.register.ModelRegister
 
-class ModelFactory (
+class ModelFactory(
     private val application: Application,
     private val dataPreferences: DataPreferences
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        val repository = Repository(application, dataPreferences)
         return when {
             modelClass.isAssignableFrom(ViewModelLogin::class.java) ->
                 ViewModelLogin(dataPreferences, application) as T
             modelClass.isAssignableFrom(HomeViewModel::class.java) ->
                 HomeViewModel(dataPreferences, application) as T
-            modelClass.isAssignableFrom(ModelRegister::class.java) -> 
+            modelClass.isAssignableFrom(ModelRegister::class.java) ->
                 ModelRegister(dataPreferences, application) as T
+            modelClass.isAssignableFrom(ViewModelDetailProfile::class.java) ->
+                ViewModelDetailProfile(application, repository, dataPreferences) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
     }

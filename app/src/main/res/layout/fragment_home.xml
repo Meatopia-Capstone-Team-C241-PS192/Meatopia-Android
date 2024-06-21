@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,131 +7,134 @@
     android:background="@color/white"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/name_user_inHome"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/mulish"
-        android:text="@string/hello_chegue"
-        android:textColor="@color/black_50"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="19dp"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/what_are_you_looking_for"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="2dp"
-        android:textColor="@color/black_50"
-        android:textSize="13sp"
-        android:fontFamily="@font/mulish"
-        android:text="@string/what_are_you_looking_for"
-        app:layout_constraintTop_toBottomOf="@+id/name_user_inHome" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="11.61dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/what_are_you_looking_for">
-
-        <com.example.mygrocerystore.ui.itemUi.InputSearch
-            android:id="@+id/input_search_inHome"
+        <TextView
+            android:id="@+id/name_user_inHome"
             android:layout_width="match_parent"
-            android:layout_height="44.21dp"
-            android:textAlignment="textStart"
-            android:paddingStart="50dp"
+            android:layout_height="20dp"
+            android:fontFamily="@font/mulish"
+            android:text="@string/hello_chegue"
+            android:textColor="@color/black_50"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="19dp"
             android:textSize="13sp"
-            android:textColor="@color/grey200"
-            android:fontFamily="@font/mulish_medium"
-            android:text="@string/search_keywords" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/what_are_you_looking_for"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/black_50"
+            android:textSize="13sp"
+            android:fontFamily="@font/mulish"
+            android:text="@string/what_are_you_looking_for"
+            app:layout_constraintTop_toBottomOf="@+id/name_user_inHome" />
 
-    <ImageView
-        android:id="@+id/image_scan"
-        android:layout_width="match_parent"
-        android:layout_height="121dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginEnd="39dp"
-        android:layout_marginTop="24.61dp"
-        android:background="@drawable/rectangle_8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_search" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="11.61dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/what_are_you_looking_for">
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="106dp"
-        android:layout_height="49.95dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="59.61dp"
-        android:background="@drawable/meaticoninscan"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_search" />
+            <com.example.mygrocerystore.ui.itemUi.InputSearch
+                android:id="@+id/input_search_inHome"
+                android:layout_width="match_parent"
+                android:layout_height="44.21dp"
+                android:textAlignment="textStart"
+                android:paddingStart="50dp"
+                android:textSize="13sp"
+                android:textColor="@color/grey200"
+                android:fontFamily="@font/mulish_medium" />
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="171dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginTop="49.61dp"
-        android:fontFamily="@font/mulish_semibold"
-        android:text="@string/make_sure_your_meat_the_highest_quality"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/image_scan"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/layout_search" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.example.mygrocerystore.ui.itemUi.ButtonScan
-        android:id="@+id/button_scan"
-        android:layout_width="101dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="7dp"
-        android:fontFamily="@font/mulish_extrabold"
-        android:text="@string/scan_now"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/image_scan"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        <ImageView
+            android:id="@+id/image_scan"
+            android:layout_width="match_parent"
+            android:layout_height="121dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginEnd="39dp"
+            android:layout_marginTop="24.61dp"
+            android:background="@drawable/rectangle_8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_search" />
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/mulish_bold"
-        android:text="@string/featured_products"
-        android:textColor="@color/grey_100"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_scan" />
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="106dp"
+            android:layout_height="49.95dp"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="59.61dp"
+            android:background="@drawable/meaticoninscan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_search" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_inHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="171dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="49.61dp"
+            android:fontFamily="@font/mulish_semibold"
+            android:text="@string/make_sure_your_meat_the_highest_quality"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/image_scan"
+            app:layout_constraintStart_toEndOf="@+id/imageView10"
+            app:layout_constraintTop_toBottomOf="@+id/layout_search" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.example.mygrocerystore.ui.itemUi.ButtonScan
+            android:id="@+id/button_scan"
+            android:layout_width="101dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/mulish_extrabold"
+            android:text="@string/scan_now"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/image_scan"
+            app:layout_constraintStart_toEndOf="@+id/imageView10"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/mulish_bold"
+            android:text="@string/featured_products"
+            android:textColor="@color/grey_100"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_scan" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_inHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="13dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

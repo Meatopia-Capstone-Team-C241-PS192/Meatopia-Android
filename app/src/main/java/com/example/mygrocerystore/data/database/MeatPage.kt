@@ -5,6 +5,8 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.mygrocerystore.data.response.MeatResponseItem
 import com.example.mygrocerystore.data.retrofit.ApiService
+import retrofit2.HttpException
+import java.io.IOException
 
 class MeatPage(
     private val pref: DataPreferences,

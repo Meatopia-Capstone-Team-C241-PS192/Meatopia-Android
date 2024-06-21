@@ -1,6 +1,9 @@
 package com.example.mygrocerystore.ui.camera
 
+import android.app.ActivityOptions
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -17,11 +20,23 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.mygrocerystore.MainActivity
 import com.example.mygrocerystore.R
+import com.example.mygrocerystore.data.response.PredictResponse
+import com.example.mygrocerystore.data.retrofit.ApiConfig
 import com.example.mygrocerystore.databinding.ActivityCameraBinding
 import com.example.mygrocerystore.ui.result.ResultActivity
+import com.example.mygrocerystore.utils.reduceFileImage
+import com.example.mygrocerystore.utils.uriToFile
+import com.google.gson.Gson
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.HttpException
 import java.io.File
+import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -35,6 +50,8 @@ class CameraActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportActionBar?.hide()
 
         outputDirectory = getOutputDirectory()
         setUpAction()
@@ -56,10 +73,10 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private fun startCountDown() {
+        Toast.makeText(this@CameraActivity, "Scanning", Toast.LENGTH_SHORT).show()
         object : CountDownTimer(5000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-//                val secondsRemaining = millisUntilFinished / 1000
-//                Toast.makeText(this@CameraActivity, "Taking photo in $secondsRemaining seconds", Toast.LENGTH_SHORT).show()
+                // No action needed on tick
             }
 
             override fun onFinish() {
@@ -80,19 +97,70 @@ class CameraActivity : AppCompatActivity() {
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
-                    Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
+                    Log.e(TAG, "Camera Response 4: ${exc.message}", exc)
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     Log.d(TAG, "Photo capture succeeded: $savedUri")
-                    val intent = Intent(this@CameraActivity, ResultActivity::class.java).apply {
-                        putExtra("IMAGE_URI", savedUri.toString())
-                    }
-                    startActivity(intent)
+                    validateImage(savedUri)
                 }
             }
         )
+    }
+
+    private fun validateImage(uri: Uri) {
+        var imageFile = uriToFile(uri, this).reduceFileImage()
+
+        if (!imageFile.extension.equals("jpg", ignoreCase = true)) {
+            imageFile = convertToJpg(imageFile)
+        }
+
+        val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
+        val multipartBody = MultipartBody.Part.createFormData(
+            "image",
+            imageFile.name,
+            requestImageFile
+        )
+
+        lifecycleScope.launch {
+            try {
+                val apiService = ApiConfig.getApiService()
+                val successResponse = apiService.uploadImage(multipartBody)
+                navigateToResult(uri, successResponse)
+                Log.d(TAG, "Camera response 1: ${Gson().toJson(successResponse)}")
+            } catch (e: HttpException) {
+                val errorBody = e.response()?.errorBody()?.string()
+                val errorResponse = Gson().fromJson(errorBody, PredictResponse::class.java)
+                Log.e(TAG, "Camera response 2: ${Gson().toJson(errorResponse)}")
+                showToast(errorResponse.status ?: "An error occurred")
+            } catch (e: Exception) {
+                Log.e(TAG, "Unexpected error 5: ${e.message}", e)
+                showToast("Unexpected error occurred")
+            }
+        }
+    }
+
+    private fun convertToJpg(file: File): File {
+        Log.d(TAG, "Camera convertToJpg: ${file.path}")
+        val bitmap = BitmapFactory.decodeFile(file.path)
+        val jpgFile = File(file.parent, file.nameWithoutExtension + ".jpg")
+        FileOutputStream(jpgFile).use { out ->
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
+        }
+        return jpgFile
+    }
+
+    private fun navigateToResult(uri: Uri, predictResponse: PredictResponse) {
+        val intent = Intent(this@CameraActivity, ResultActivity::class.java).apply {
+            putExtra("IMAGE_URI", uri.toString())
+            putExtra("PREDICT_RESPONSE", Gson().toJson(predictResponse))
+        }
+        startActivity(intent)
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun startCamera() {
@@ -119,7 +187,12 @@ class CameraActivity : AppCompatActivity() {
     private fun setUpAction() {
         binding.buttonBackInCamera.setOnClickListener {
             Intent(this, MainActivity::class.java).apply {
-                startActivity(this)
+                val options = ActivityOptions.makeCustomAnimation(
+                    this@CameraActivity,
+                    R.anim.slide_in_left,
+                    R.anim.anim_none
+                )
+                startActivity(this, options.toBundle())
                 finish()
             }
         }
@@ -155,10 +228,7 @@ class CameraActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK) {
             data?.data?.let { uri ->
-                val intent = Intent(this, ResultActivity::class.java).apply {
-                    putExtra("IMAGE_URI", uri.toString())
-                }
-                startActivity(intent)
+                validateImage(uri)
             }
         }
     }

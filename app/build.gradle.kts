@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.camera.lifecycle)
     implementation(libs.camera.view)
 
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation ("androidx.paging:paging-runtime:3.1.0") // Adjust the version as necessary

@@ -41,4 +41,3 @@ data class RegisterResultOne(
     @field:SerializedName("role")
     val role: String
 ) : Parcelable
-

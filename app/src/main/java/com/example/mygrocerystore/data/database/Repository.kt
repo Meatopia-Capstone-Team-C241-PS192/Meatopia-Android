@@ -1,5 +1,6 @@
 package com.example.mygrocerystore.data.database
 
+import MeatSearchPagingSource
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -11,14 +12,18 @@ import androidx.paging.liveData
 import com.example.mygrocerystore.data.response.LoginRequest
 import com.example.mygrocerystore.data.response.LoginResponse
 import com.example.mygrocerystore.data.response.LoginResult
+import com.example.mygrocerystore.data.response.MeResponse
 import com.example.mygrocerystore.data.response.MeatResponseItem
 import com.example.mygrocerystore.data.retrofit.ApiConfig
 import com.example.mygrocerystore.data.retrofit.ApiService
 import com.example.mygrocerystore.data.response.RegisterResponse
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import retrofit2.HttpException
 
 class Repository(private val application: Application, private val dataPreferences: DataPreferences) {
     private val apiService: ApiService = ApiConfig.getApiService()
+    private var meatList: List<MeatResponseItem> = emptyList()
 
     fun login(email: String, password: String): LiveData<ThisResult<LoginResponse>> =
         liveData(Dispatchers.IO) {
@@ -63,6 +68,45 @@ class Repository(private val application: Application, private val dataPreferenc
                 MeatPage(dataPreferences, apiService)
             }
         ).liveData
+    }
+
+    fun getProfile(token: String): LiveData<ThisResult<MeResponse>> = liveData(Dispatchers.IO) {
+        emit(ThisResult.Loading)
+        try {
+            val bearerToken = "Bearer $token"
+            Log.d("Repository", "getProfile: Using token - $bearerToken")
+            val response = apiService.getProfile(bearerToken)
+            if (response.isSuccessful) {
+                response.body()?.let {
+                    Log.d("Repository", "getProfile: Success - $it")
+                    emit(ThisResult.SuccessData(it))
+                } ?: run {
+                    emit(ThisResult.ErrorData("Response body is null"))
+                    Log.e("Repository", "getProfile: Response body is null")
+                }
+            } else {
+                emit(ThisResult.ErrorData("HTTP ${response.code()} ${response.message()}"))
+                Log.e("Repository", "getProfile: Error - HTTP ${response.code()} ${response.message()}")
+            }
+        } catch (e: HttpException) {
+            emit(ThisResult.ErrorData("HTTP ${e.code()} ${e.message()}"))
+            Log.e("Repository", "getProfile: HttpException - HTTP ${e.code()} ${e.message()}")
+        } catch (e: Exception) {
+            emit(ThisResult.ErrorData(e.message.toString()))
+            Log.e("Repository", "getProfile: Exception - ${e.message}")
+        }
+    }
+
+
+
+    fun searchMeats(query: String): Flow<PagingData<MeatResponseItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { MeatSearchPagingSource(apiService, dataPreferences, query) }
+        ).flow
     }
 
     fun registerUser(

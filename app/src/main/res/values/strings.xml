@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Grocery Store</string>
+    <string name="app_name">Meatopia</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -40,16 +40,16 @@
     <string name="order_confirmed">Order Confirmed</string>
     <string name="you_order_has_been_confirmed_will_be_delivered_soon">You order has been confirmed. Will be delivered soon</string>
     <string name="profile">Profile</string>
-    <string name="sulaiman">Sulaiman</string>
+    <string name="sulaiman">Iman</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
-    <string name="muhammadsulaiman8303_gmail_com">muhammadsulaiman8303@gmail.com</string>
+    <string name="muhammadsulaiman8303_gmail_com">iman@gmail.com</string>
     <string name="phone">Phone</string>
     <string name="address">Address</string>
     <string name="jl_simajuntak_raja_3_no_43_pajagalan">Jl. Simajuntak raja 3 no 43 pajagalan</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="meat_quaility">Meat Quaility :</string>
-    <string name="fresh_meat">Fresh Meat</string>
+    <string name="fresh_meat">cannot be ascertained</string>
     <string name="payment">Payment</string>
     <string name="amout_to_pay">Amout To Pay</string>
     <string name="frozen_meat">Frozen Meat</string>
@@ -96,6 +96,7 @@
     <string name="input_name">Input name</string>
     <string name="_082138238284">082138238284</string>
     <string name="Something_wrong">Something wrong</string>
+    <string name="empty_image_warning">Meat image is empty</string>
 
     <string name="Loading">Loading</string>
     <string name="fill_all_fields">Please fill all the fields</string>

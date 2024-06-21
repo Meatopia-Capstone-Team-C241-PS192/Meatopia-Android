@@ -1,5 +1,6 @@
 package com.example.mygrocerystore.ui.ordermeat
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -33,7 +34,12 @@ class OderHistoryActivity : AppCompatActivity() {
     private fun setUpAction() {
         binding.buttonBackInOrderHistory.setOnClickListener {
             Intent(this, MainActivity::class.java).apply {
-                startActivity(this)
+                val options = ActivityOptions.makeCustomAnimation(
+                    this@OderHistoryActivity,
+                    R.anim.anim_none,
+                    R.anim.anim_none
+                )
+                startActivity(this, options.toBundle())
             }
         }
     }

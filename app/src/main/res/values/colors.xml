@@ -18,7 +18,7 @@
     <color name="red">#FE0A0A</color>
     <color name="red_50">#F55959</color>
     <color name="color_forBackground">#DDDDDD</color>
-
+    <color name="white_100">#F4F5F9</color>
     <color name="grey_50">#4F504E</color>
     <color name="grey_100">#212220</color>
     <color name="grey_200">#585858</color>

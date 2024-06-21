@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.ordermeat.OderHistoryActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +25,7 @@
             style="@style/title_above"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
             android:text="@string/order_history"
             app:layout_constraintStart_toEndOf="@+id/button_back_inOrderHistory"
             app:layout_constraintTop_toTopOf="parent" />

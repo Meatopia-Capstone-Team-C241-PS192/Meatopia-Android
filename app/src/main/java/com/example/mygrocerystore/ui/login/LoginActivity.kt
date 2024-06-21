@@ -1,5 +1,6 @@
 package com.example.mygrocerystore.ui.login
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -35,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
 
         setUpAction()
 
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -60,7 +62,12 @@ class LoginActivity : AppCompatActivity() {
 
         binding.buttonSignUpInLogin.setOnClickListener {
             Intent(this, RegisterActivity::class.java).apply {
-                startActivity(this)
+                val options = ActivityOptions.makeCustomAnimation(
+                    this@LoginActivity,
+                    R.anim.anim_none,
+                    R.anim.anim_none
+                )
+                startActivity(this, options.toBundle())
             }
         }
     }
@@ -94,7 +101,12 @@ class LoginActivity : AppCompatActivity() {
     private fun navigateToHome(data: LoginResponse) {
         saveDataLogin(data)
         Intent(this, MainActivity::class.java).apply {
-            startActivity(this)
+            val options = ActivityOptions.makeCustomAnimation(
+                this@LoginActivity,
+                R.anim.slide_out_right,
+                R.anim.anim_none
+            )
+            startActivity(this, options.toBundle())
             finish()
         }
     }

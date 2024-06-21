@@ -23,12 +23,6 @@
         tools:layout="@layout/activity_my_cart" />
 
     <activity
-        android:id="@+id/nav_order_history"
-        android:name="com.example.mygrocerystore.ui.ordermeat.OderHistoryActivity"
-        android:label="@string/menu_history"
-        tools:layout="@layout/activity_oder_history" />
-
-    <activity
         android:id="@+id/nav_logout"
         android:name="com.example.mygrocerystore.ui.login.LoginActivity"
         tools:layout="@layout/activity_login" />

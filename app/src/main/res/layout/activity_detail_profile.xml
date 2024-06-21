@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="wrap_content"
     tools:context=".ui.profile.DetailProfileActivity">
     
@@ -27,15 +28,6 @@
             android:layout_height="wrap_content"
             android:text="@string/profile"
             app:layout_constraintStart_toEndOf="@+id/buttonBack_in_detail_profile"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.example.mygrocerystore.ui.itemUi.ButtonEdit
-            android:id="@+id/buttonEdit_in_detail_profile"
-            android:layout_width="29dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="27dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView

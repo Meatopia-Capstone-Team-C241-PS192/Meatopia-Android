@@ -1,6 +1,7 @@
 package com.example.mygrocerystore.ui.register
 
 
+import android.app.ActivityOptions
 import android.widget.Button
 import android.widget.EditText
 
@@ -84,7 +85,12 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.buttonBackInSignUp.setOnClickListener {
             Intent(this, LoginActivity::class.java).apply {
-                startActivity(this)
+                val options = ActivityOptions.makeCustomAnimation(
+                    this@RegisterActivity,
+                    R.anim.anim_none,
+                    R.anim.anim_none
+                )
+                startActivity(this, options.toBundle())
                 finish()
             }
         }

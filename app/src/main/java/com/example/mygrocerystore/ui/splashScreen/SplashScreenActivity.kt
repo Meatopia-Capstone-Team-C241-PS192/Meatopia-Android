@@ -1,5 +1,6 @@
 package com.example.mygrocerystore.ui.splashScreen
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -59,7 +60,12 @@ class SplashScreenActivity : AppCompatActivity() {
     private fun setUpAction() {
         binding.buttonGetStarted.setOnClickListener {
             Intent(this, LoginActivity::class.java).apply {
-                startActivity(this)
+                val options = ActivityOptions.makeCustomAnimation(
+                    this@SplashScreenActivity,
+                    R.anim.slide_out_right,
+                    R.anim.anim_none
+                )
+                startActivity(this, options.toBundle())
                 finish()
             }
         }
