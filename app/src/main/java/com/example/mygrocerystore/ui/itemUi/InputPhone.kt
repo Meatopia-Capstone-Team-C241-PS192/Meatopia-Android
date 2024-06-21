@@ -17,7 +17,8 @@ class InputPhone : AppCompatEditText {
             override fun afterTextChanged(p0: Editable?) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (!s.isNullOrEmpty() && Validation.isInvalidInput(s)) error = context.getString(R.string.invalid_phone)
+                if (!s.isNullOrEmpty() && Validation.isInvalidInput(s)) error =
+                    context.getString(R.string.invalid_phone)
             }
         })
     }

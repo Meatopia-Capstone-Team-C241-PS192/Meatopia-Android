@@ -1,4 +1,5 @@
 package com.example.mygrocerystore.data.modelfactory
+
 import HomeViewModel
 import android.app.Application
 import androidx.lifecycle.ViewModel
@@ -20,12 +21,16 @@ class ModelFactory(
         return when {
             modelClass.isAssignableFrom(ViewModelLogin::class.java) ->
                 ViewModelLogin(dataPreferences, application) as T
+
             modelClass.isAssignableFrom(HomeViewModel::class.java) ->
                 HomeViewModel(dataPreferences, application) as T
+
             modelClass.isAssignableFrom(ViewModelRegister::class.java) ->
                 ViewModelRegister(dataPreferences, application) as T
+
             modelClass.isAssignableFrom(ViewModelDetailProfile::class.java) ->
                 ViewModelDetailProfile(application, repository, dataPreferences) as T
+
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
     }

@@ -38,10 +38,12 @@ class ViewModelDetailProfile(
                         Log.d("ViewModelDetailProfile", "fetchProfile: Loading")
                         // Optionally handle loading state
                     }
+
                     is ThisResult.SuccessData -> {
                         Log.d("ViewModelDetailProfile", "fetchProfile: Success - ${result.data}")
                         _profile.postValue(result.data)
                     }
+
                     is ThisResult.ErrorData -> {
                         val errorMessage = result.data ?: "Unknown error"
                         Log.e("ViewModelDetailProfile", "fetchProfile: Error - $errorMessage")

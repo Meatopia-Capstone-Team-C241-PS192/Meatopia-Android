@@ -17,11 +17,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        style="@style/title_above"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="90dp"
         android:text="@string/my_cart"
-        style="@style/title_above"
         app:layout_constraintStart_toEndOf="@+id/button_back_inMyCart"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,10 +75,10 @@
 
     <com.example.mygrocerystore.ui.itemUi.ButtonCircleAdd
         android:id="@+id/myp_button_add"
-        android:layout_marginBottom="25dp"
-        android:layout_marginEnd="22dp"
         android:layout_width="22dp"
         android:layout_height="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/empty_cart_inMyCart"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -107,12 +107,12 @@
         android:id="@+id/myp_price"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="@string/rp180_000"
-        android:fontFamily="@font/mulish_bold"
-        android:textSize="17.19sp"
-        android:layout_marginTop="7dp"
         android:layout_marginStart="21.5dp"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/mulish_bold"
+        android:text="@string/rp180_000"
         android:textColor="@color/purple_300"
+        android:textSize="17.19sp"
         app:layout_constraintStart_toEndOf="@+id/myp_photo_meat"
         app:layout_constraintTop_toBottomOf="@+id/myp_price_kg" />
 
@@ -133,11 +133,11 @@
         android:id="@+id/button_checkout_inMyCart"
         android:layout_width="match_parent"
         android:layout_height="43dp"
-        android:text="@string/checkout"
+        android:layout_marginStart="39dp"
         android:layout_marginTop="59dp"
         android:layout_marginEnd="39dp"
-        android:layout_marginStart="39dp"
         android:fontFamily="@font/inter_semibold"
+        android:text="@string/checkout"
         app:layout_constraintTop_toBottomOf="@+id/empty_cart_inMyCart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

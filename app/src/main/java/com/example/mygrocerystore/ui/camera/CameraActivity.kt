@@ -215,7 +215,10 @@ class CameraActivity : AppCompatActivity() {
             Toast.makeText(this, "Flash is not available", Toast.LENGTH_SHORT).show()
             ImageCapture.FLASH_MODE_OFF
         }
-        Log.d(TAG, "Flash mode set to: ${if (imageCapture.flashMode == ImageCapture.FLASH_MODE_ON) "ON" else "OFF"}")
+        Log.d(
+            TAG,
+            "Flash mode set to: ${if (imageCapture.flashMode == ImageCapture.FLASH_MODE_ON) "ON" else "OFF"}"
+        )
     }
 
     companion object {

@@ -72,12 +72,15 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_home -> {
                 replaceFragment(HomeFragment())
             }
+
             R.id.nav_user -> {
                 startActivity(Intent(this, DetailProfileActivity::class.java))
             }
+
             R.id.nav_my_cart -> {
                 startActivity(Intent(this, MyCartActivity::class.java))
             }
+
             R.id.nav_logout -> {
                 preferences.clearLogin()
                 startActivity(Intent(this, LoginActivity::class.java).apply {

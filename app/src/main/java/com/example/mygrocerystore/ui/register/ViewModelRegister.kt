@@ -22,7 +22,8 @@ class ViewModelRegister(
         role: String
     ) = liveData {
         emit(ThisResult.Loading)
-        val result = repositoryRegister.register(name, email, phone, address, password, confPassword, role)
+        val result =
+            repositoryRegister.register(name, email, phone, address, password, confPassword, role)
         emitSource(result)
     }
 }

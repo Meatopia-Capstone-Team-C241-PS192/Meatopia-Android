@@ -9,7 +9,10 @@ class DataPreferences(context: Context) {
 
     fun setLogin(value: LoginResult) {
         val editor = preferences.edit()
-        Log.d("DataPreferences", "setLogin: Saving data - name: ${value.name}, id: ${value.id}, token: ${value.token}, role: ${value.role}, email: ${value.email}")
+        Log.d(
+            "DataPreferences",
+            "setLogin: Saving data - name: ${value.name}, id: ${value.id}, token: ${value.token}, role: ${value.role}, email: ${value.email}"
+        )
         editor.putString(NAME, value.name)
         editor.putString(ID, value.id)
         editor.putString(TOKEN, value.token)
@@ -25,7 +28,10 @@ class DataPreferences(context: Context) {
         val token = preferences.getString(TOKEN, null)
         val role = preferences.getString(ROLE, null)
         val email = preferences.getString(EMAIL, null)
-        Log.d("DataPreferences", "getUser: Retrieved data - name: $name, id: $id, token: $token, role: $role")
+        Log.d(
+            "DataPreferences",
+            "getUser: Retrieved data - name: $name, id: $id, token: $token, role: $role"
+        )
         return if (name != null && id != null && token != null && role != null && email != null) {
             LoginResult(name = name, id = id, token = token, role = role, email = email)
         } else {

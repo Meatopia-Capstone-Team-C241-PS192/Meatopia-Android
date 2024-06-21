@@ -8,7 +8,8 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatButton
 import com.example.mygrocerystore.R
 
-class ButtonBack (context: Context, attrs: AttributeSet?
+class ButtonBack(
+    context: Context, attrs: AttributeSet?
 ) : AppCompatButton(context, attrs) {
 
     private var paddingLeft = 0

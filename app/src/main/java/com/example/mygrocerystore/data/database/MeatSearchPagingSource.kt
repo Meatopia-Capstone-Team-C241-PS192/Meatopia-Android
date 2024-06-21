@@ -18,7 +18,10 @@ class MeatSearchPagingSource(
         return try {
             val token = pref.getUser()?.token.toString()
             val response = apiService.searchMeat("Bearer $token", query, page, params.loadSize)
-            Log.d("MeatSearchPagingSource", "Query: $query, Page: $page, LoadSize: ${params.loadSize}")
+            Log.d(
+                "MeatSearchPagingSource",
+                "Query: $query, Page: $page, LoadSize: ${params.loadSize}"
+            )
             Log.d("MeatSearchPagingSource", "Response code: body: $response")
 
             if (response.isNotEmpty()) {

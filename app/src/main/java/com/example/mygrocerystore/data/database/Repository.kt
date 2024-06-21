@@ -23,7 +23,10 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import retrofit2.HttpException
 
-class Repository(private val application: Application, private val dataPreferences: DataPreferences) {
+class Repository(
+    private val application: Application,
+    private val dataPreferences: DataPreferences
+) {
     private val apiService: ApiService = ApiConfig.getApiService()
     private var meatList: List<MeatResponseItem> = emptyList()
 
@@ -88,7 +91,10 @@ class Repository(private val application: Application, private val dataPreferenc
                 }
             } else {
                 emit(ThisResult.ErrorData("HTTP ${response.code()} ${response.message()}"))
-                Log.e("Repository", "getProfile: Error - HTTP ${response.code()} ${response.message()}")
+                Log.e(
+                    "Repository",
+                    "getProfile: Error - HTTP ${response.code()} ${response.message()}"
+                )
             }
         } catch (e: HttpException) {
             emit(ThisResult.ErrorData("HTTP ${e.code()} ${e.message()}"))
@@ -98,7 +104,6 @@ class Repository(private val application: Application, private val dataPreferenc
             Log.e("Repository", "getProfile: Exception - ${e.message}")
         }
     }
-
 
 
     fun searchMeats(query: String): Flow<PagingData<MeatResponseItem>> {
@@ -128,11 +133,18 @@ class Repository(private val application: Application, private val dataPreferenc
             val phoneBody = RequestBody.create("text/plain".toMediaTypeOrNull(), phone)
             val addressBody = RequestBody.create("text/plain".toMediaTypeOrNull(), address)
             val passwordBody = RequestBody.create("text/plain".toMediaTypeOrNull(), password)
-            val confPasswordBody = RequestBody.create("text/plain".toMediaTypeOrNull(), confPassword)
+            val confPasswordBody =
+                RequestBody.create("text/plain".toMediaTypeOrNull(), confPassword)
             val roleBody = RequestBody.create("text/plain".toMediaTypeOrNull(), role)
 
             val response = apiService.register(
-                nameBody, emailBody, phoneBody, addressBody, passwordBody, confPasswordBody, roleBody
+                nameBody,
+                emailBody,
+                phoneBody,
+                addressBody,
+                passwordBody,
+                confPasswordBody,
+                roleBody
             )
 
             if (response.isSuccessful) {

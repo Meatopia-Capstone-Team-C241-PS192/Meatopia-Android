@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     tools:context=".ui.profile.DetailProfileActivity">
-    
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -35,10 +34,10 @@
             android:layout_width="122.82dp"
             android:layout_height="122.82dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="42dp"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             android:padding="8dp"
-            android:layout_marginTop="42dp"
             android:src="@drawable/profile_image"
             app:civ_border_color="@color/white"
             app:civ_circle_background_color="@color/white"
@@ -62,11 +61,11 @@
 
         <TextView
             android:id="@+id/textView5"
+            style="@style/CustomTextInDetailProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="66dp"
             android:layout_marginStart="24dp"
-            style="@style/CustomTextInDetailProfile"
+            android:layout_marginTop="66dp"
             android:text="@string/username"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name_detail_profile" />
@@ -87,8 +86,8 @@
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="14dp"
             android:background="@drawable/line_indetailprofile"
             app:layout_constraintEnd_toEndOf="parent"
@@ -100,8 +99,8 @@
             style="@style/CustomTextInDetailProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
             android:text="@string/email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView5" />
@@ -123,8 +122,8 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginStart="15dp"
-            android:layout_marginEnd="14dp"
             android:layout_marginTop="6dp"
+            android:layout_marginEnd="14dp"
             android:background="@drawable/line_indetailprofile"
             app:layout_constraintTop_toBottomOf="@+id/email_detail_profile" />
 
@@ -133,8 +132,8 @@
             style="@style/CustomTextInDetailProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
             android:text="@string/phone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView6" />
@@ -156,8 +155,8 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginStart="15dp"
-            android:layout_marginEnd="14dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="14dp"
             android:background="@drawable/line_indetailprofile"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -166,8 +165,8 @@
             style="@style/CustomTextInDetailProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
             android:text="@string/address"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView7" />
@@ -192,7 +191,7 @@
             android:layout_marginBottom="70dp"
             android:background="@drawable/line_indetailprofile"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/address_detail_profile"/>
+            app:layout_constraintTop_toBottomOf="@+id/address_detail_profile" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

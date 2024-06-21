@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.editprofile.EditProfileActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,10 +35,10 @@
             android:layout_width="122.82dp"
             android:layout_height="122.82dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="42dp"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             android:padding="8dp"
-            android:layout_marginTop="42dp"
             android:src="@drawable/profile_image"
             app:civ_border_color="@color/white"
             app:civ_circle_background_color="@color/white"
@@ -50,9 +50,9 @@
             android:id="@+id/camera_edit_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/icon_camera"
             android:layout_marginTop="132dp"
             android:layout_marginEnd="162dp"
+            android:background="@drawable/icon_camera"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
@@ -68,8 +68,8 @@
             android:id="@+id/layout_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="38dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,13 +89,13 @@
             android:text="@string/email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_name" />
-        
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layout_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="38dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -120,8 +120,8 @@
             android:id="@+id/layout_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="38dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -146,8 +146,8 @@
             android:id="@+id/layout_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="38dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -188,9 +188,9 @@
         <com.example.mygrocerystore.ui.itemUi.ButtonCustom
             android:layout_width="127dp"
             android:layout_height="34dp"
-            android:text="@string/save"
             android:layout_marginTop="62dp"
             android:layout_marginBottom="200dp"
+            android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

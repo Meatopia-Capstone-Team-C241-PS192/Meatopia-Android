@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class LoginResult (
+data class LoginResult(
     val id: String? = null,
     val name: String? = null,
     val email: String? = null,

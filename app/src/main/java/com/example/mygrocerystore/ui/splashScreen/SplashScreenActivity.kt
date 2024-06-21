@@ -43,14 +43,14 @@ class SplashScreenActivity : AppCompatActivity() {
         val user = dataLoginPreferences.getUser()
         if (user != null) {
             loginModel = user
-                if (loginModel!!.name != null && loginModel!!.id != null) {
-                    Intent(this, MainActivity::class.java).apply {
-                        startActivity(this)
-                        finish()
-                    }
-                } else {
-                    Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+            if (loginModel!!.name != null && loginModel!!.id != null) {
+                Intent(this, MainActivity::class.java).apply {
+                    startActivity(this)
+                    finish()
                 }
+            } else {
+                Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+            }
         } else {
             Log.d("SplashScreenActivity", "No user data found")
         }

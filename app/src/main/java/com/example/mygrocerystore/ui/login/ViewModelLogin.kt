@@ -8,9 +8,9 @@ import com.example.mygrocerystore.data.database.Repository
 import com.example.mygrocerystore.data.database.ThisResult
 import com.example.mygrocerystore.data.response.LoginResponse
 
-class ViewModelLogin (
+class ViewModelLogin(
     private val dataPreferences: DataPreferences, private val application: Application
-) : ViewModel(){
+) : ViewModel() {
     private val repositoryLogin = Repository(application, dataPreferences)
 
     fun loginUser(email: String, password: String): LiveData<ThisResult<LoginResponse>> {

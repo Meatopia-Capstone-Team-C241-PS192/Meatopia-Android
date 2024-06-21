@@ -15,11 +15,11 @@
             android:id="@+id/name_user_inHome"
             android:layout_width="match_parent"
             android:layout_height="20dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="19dp"
             android:fontFamily="@font/mulish"
             android:text="@string/hello_chegue"
             android:textColor="@color/black_50"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="19dp"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,10 +31,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="2dp"
-            android:textColor="@color/black_50"
-            android:textSize="13sp"
             android:fontFamily="@font/mulish"
             android:text="@string/what_are_you_looking_for"
+            android:textColor="@color/black_50"
+            android:textSize="13sp"
             app:layout_constraintTop_toBottomOf="@+id/name_user_inHome" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -42,8 +42,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
             android:layout_marginTop="11.61dp"
+            android:layout_marginEnd="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/what_are_you_looking_for">
 
@@ -51,11 +51,11 @@
                 android:id="@+id/input_search_inHome"
                 android:layout_width="match_parent"
                 android:layout_height="44.21dp"
-                android:textAlignment="textStart"
+                android:fontFamily="@font/mulish_medium"
                 android:paddingStart="50dp"
-                android:textSize="13sp"
+                android:textAlignment="textStart"
                 android:textColor="@color/grey200"
-                android:fontFamily="@font/mulish_medium" />
+                android:textSize="13sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,8 +64,8 @@
             android:layout_width="match_parent"
             android:layout_height="121dp"
             android:layout_marginStart="39dp"
-            android:layout_marginEnd="39dp"
             android:layout_marginTop="24.61dp"
+            android:layout_marginEnd="39dp"
             android:background="@drawable/rectangle_8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,8 +86,8 @@
             android:layout_width="171dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:layout_marginTop="49.61dp"
+            android:layout_marginEnd="15dp"
             android:fontFamily="@font/mulish_semibold"
             android:text="@string/make_sure_your_meat_the_highest_quality"
             android:textAlignment="center"
@@ -128,8 +128,8 @@
             android:id="@+id/recycler_view_inHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="13dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="13dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"

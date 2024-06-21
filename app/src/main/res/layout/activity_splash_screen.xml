@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,15 +9,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/splash_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/meatitsrawstate"
             android:layout_marginTop="20dp"
+            android:src="@drawable/meatitsrawstate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,11 +25,11 @@
             android:id="@+id/splash_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
             android:fontFamily="@font/inter_bold"
             android:gravity="center"
-            android:layout_marginTop="35dp"
-            android:textColor="@color/grey_50"
             android:text="@string/meatopia_shop"
+            android:textColor="@color/grey_50"
             android:textSize="33sp"
             app:layout_constraintTop_toBottomOf="@+id/splash_image" />
 
@@ -39,11 +37,11 @@
             android:id="@+id/at_your_door_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:fontFamily="@font/inter_semibold"
             android:gravity="center"
-            android:layout_marginTop="6dp"
-            android:textColor="@color/grey_50"
             android:text="@string/at_your_door"
+            android:textColor="@color/grey_50"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/splash_text" />
 
@@ -51,9 +49,9 @@
             android:id="@+id/splash_text_2"
             android:layout_width="317dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
             android:fontFamily="@font/inter"
             android:gravity="center"
-            android:layout_marginTop="3dp"
             android:text="@string/the_easiest_way_to_buy_your_meat_shopping"
             android:textColor="@color/grey_100"
             android:textSize="16sp"
@@ -67,8 +65,8 @@
             android:layout_height="40dp"
             android:layout_marginStart="53dp"
             android:layout_marginTop="21dp"
-            android:layout_marginBottom="30dp"
             android:layout_marginEnd="53dp"
+            android:layout_marginBottom="30dp"
             android:text="@string/get_started"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

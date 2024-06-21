@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <com.example.mygrocerystore.ui.itemUi.CircleCheckbox
         android:id="@+id/circleCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:button="@null"
         android:background="@drawable/circle_checkbox"
+        android:button="@null"
         android:padding="16dp"
-        tools:checked="true"/>
+        tools:checked="true" />
 </merge>

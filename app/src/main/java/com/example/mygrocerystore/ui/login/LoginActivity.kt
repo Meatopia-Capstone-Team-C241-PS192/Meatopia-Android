@@ -85,6 +85,7 @@ class LoginActivity : AppCompatActivity() {
                         Log.d("TAG", "dataLoginVerification: ${result.data}")
                         navigateToHome(result.data)
                     }
+
                     is ThisResult.ErrorData -> {
                         Toast.makeText(
                             this@LoginActivity,

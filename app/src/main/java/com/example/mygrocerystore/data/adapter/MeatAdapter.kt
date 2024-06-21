@@ -74,7 +74,10 @@ class MeatAdapter : PagingDataAdapter<MeatResponseItem, MeatAdapter.ListViewHold
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MeatResponseItem>() {
-            override fun areItemsTheSame(oldItem: MeatResponseItem, newItem: MeatResponseItem): Boolean {
+            override fun areItemsTheSame(
+                oldItem: MeatResponseItem,
+                newItem: MeatResponseItem
+            ): Boolean {
                 return oldItem.id == newItem.id
             }
 

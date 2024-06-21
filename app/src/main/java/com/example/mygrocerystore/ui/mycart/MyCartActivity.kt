@@ -55,9 +55,14 @@ class MyCartActivity : AppCompatActivity() {
             val price = intent.getStringExtra(PRICEMEAT)
             val nameMeat = intent.getStringExtra(NAMEMEAT)
             val phoneNumber = "6285806190296"
-            val message = "Halo, saya $userName ingin memesan produk $nameMeat. Dengan Total Harga Rp.$price"
+            val message =
+                "Halo, saya $userName ingin memesan produk $nameMeat. Dengan Total Harga Rp.$price"
             val intent = Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("https://api.whatsapp.com/send?phone=$phoneNumber&text=${Uri.encode(message)}")
+                data = Uri.parse(
+                    "https://api.whatsapp.com/send?phone=$phoneNumber&text=${
+                        Uri.encode(message)
+                    }"
+                )
             }
             startActivity(intent)
         }

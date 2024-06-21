@@ -7,24 +7,24 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class MeatResponseItem(
 
-	@field:SerializedName("quantityAvailable")
-	val quantityAvailable: String,
+    @field:SerializedName("quantityAvailable")
+    val quantityAvailable: String,
 
-	@field:SerializedName("price")
-	val price: String,
+    @field:SerializedName("price")
+    val price: String,
 
-	@field:SerializedName("imageUrl")
-	val imageUrl: String,
+    @field:SerializedName("imageUrl")
+    val imageUrl: String,
 
-	@field:SerializedName("name")
-	val name: String,
+    @field:SerializedName("name")
+    val name: String,
 
-	@field:SerializedName("description")
-	val description: String,
+    @field:SerializedName("description")
+    val description: String,
 
-	@field:SerializedName("id")
-	val id: String,
+    @field:SerializedName("id")
+    val id: String,
 
-	@field:SerializedName("type")
-	val type: String
+    @field:SerializedName("type")
+    val type: String
 ) : Parcelable

@@ -77,17 +77,34 @@ class RegisterActivity : AppCompatActivity() {
         confPassword: String,
         role: String
     ) {
-        Log.d("RegisterActivity", "onCreate: $name $email $phoneNumber $address $password $confPassword $role")
-        viewModelRegister.registerUser(name, email, phoneNumber, address, password, confPassword, role)
+        Log.d(
+            "RegisterActivity",
+            "onCreate: $name $email $phoneNumber $address $password $confPassword $role"
+        )
+        viewModelRegister.registerUser(
+            name,
+            email,
+            phoneNumber,
+            address,
+            password,
+            confPassword,
+            role
+        )
             .observe(this) { result ->
                 when (result) {
                     is ThisResult.SuccessData -> {
                         Toast.makeText(this, getString(R.string.success), Toast.LENGTH_SHORT).show()
                         navigateToLogin()
                     }
+
                     is ThisResult.ErrorData -> {
-                        Toast.makeText(this, getString(R.string.Something_wrong), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            getString(R.string.Something_wrong),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
+
                     else -> {}
                 }
             }

@@ -3,28 +3,28 @@
     android:height="220dp"
     android:viewportWidth="220"
     android:viewportHeight="220">
-  <path
-      android:pathData="M0,0h10.48v62.86h-10.48z"
-      android:fillColor="#ffffff"/>
-  <path
-      android:pathData="M0,10.48l0,-10.48l62.86,-0l0,10.48z"
-      android:fillColor="#ffffff"/>
-  <path
-      android:pathData="M0,220l10.48,-0l0,-62.86l-10.48,-0z"
-      android:fillColor="#ffffff"/>
-  <path
-      android:pathData="M0,209.52l0,10.48l62.86,0l0,-10.48z"
-      android:fillColor="#ffffff"/>
-  <path
-      android:pathData="M220,0l-10.48,0l-0,62.86l10.48,0z"
-      android:fillColor="#ffffff"/>
-  <path
-      android:pathData="M220,10.48l-0,-10.48l-62.86,-0l-0,10.48z"
-      android:fillColor="#ffffff"/>
-  <path
-      android:pathData="M220,220l-10.48,-0l-0,-62.86l10.48,-0z"
-      android:fillColor="#ffffff"/>
-  <path
-      android:pathData="M220,209.52l-0,10.48l-62.86,0l-0,-10.48z"
-      android:fillColor="#ffffff"/>
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M0,0h10.48v62.86h-10.48z" />
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M0,10.48l0,-10.48l62.86,-0l0,10.48z" />
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M0,220l10.48,-0l0,-62.86l-10.48,-0z" />
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M0,209.52l0,10.48l62.86,0l0,-10.48z" />
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M220,0l-10.48,0l-0,62.86l10.48,0z" />
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M220,10.48l-0,-10.48l-62.86,-0l-0,10.48z" />
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M220,220l-10.48,-0l-0,-62.86l10.48,-0z" />
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M220,209.52l-0,10.48l-62.86,0l-0,-10.48z" />
 </vector>
