@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.bangkit.mygrocerystore",
+  "applicationId": "com.example.mygrocerystore",
   "variantName": "release",
   "elements": [
     {

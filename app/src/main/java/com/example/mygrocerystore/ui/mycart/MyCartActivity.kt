@@ -58,9 +58,7 @@ class MyCartActivity : AppCompatActivity() {
 
     private fun setUpAction() {
         binding.buttonCheckoutInMyCart.setOnClickListener {
-            // Send selected items to WhatsApp
             sendSelectedItemsToWhatsApp()
-            // Remove selected items
             cartAdapter.removeSelectedItems()
             saveCartItems() // Save cart items to SharedPreferences after removing items
             updateCheckoutButtonVisibility()
@@ -71,6 +69,12 @@ class MyCartActivity : AppCompatActivity() {
             Intent(this, MainActivity::class.java).apply {
                 startActivity(this)
             }
+        }
+
+        binding.buttonTrashInMyCart.setOnClickListener {
+            cartAdapter.removeSelectedItems()
+            saveCartItems() // Save cart items to SharedPreferences after removing all items
+            updateCheckoutButtonVisibility()
         }
     }
 
