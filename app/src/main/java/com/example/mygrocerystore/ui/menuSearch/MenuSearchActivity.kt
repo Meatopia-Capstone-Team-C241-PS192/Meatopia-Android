@@ -3,17 +3,11 @@ package com.example.mygrocerystore.ui.menuSearch
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mygrocerystore.MainActivity
 import com.example.mygrocerystore.R
-import com.example.mygrocerystore.data.adapter.MeatAdapter
-import com.example.mygrocerystore.data.database.DataPreferences
-import com.example.mygrocerystore.data.database.Repository
 import com.example.mygrocerystore.databinding.ActivityMenuSearchBinding
 
 class MenuSearchActivity : AppCompatActivity() {

@@ -1,66 +1,97 @@
 package com.example.mygrocerystore.ui.mycart
 
-import android.app.ActivityOptions
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.bumptech.glide.Glide
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mygrocerystore.MainActivity
-import com.example.mygrocerystore.R
-import com.example.mygrocerystore.data.database.DataHolder
+import com.example.mygrocerystore.data.adapter.CartAdapter
 import com.example.mygrocerystore.data.database.DataPreferences
+import com.example.mygrocerystore.data.model.CartItem
 import com.example.mygrocerystore.databinding.ActivityMyCartBinding
-import com.example.mygrocerystore.ui.detailmeat.DetailMeatActivity
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class MyCartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMyCartBinding
+    private val cartItems = mutableListOf<CartItem>()
+    private lateinit var cartAdapter: CartAdapter
     private lateinit var pref: DataPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityMyCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initialize pref here
         pref = DataPreferences(this)
 
-        setUpAction()
-        setUpData()
+        loadCartItems()
+        setupRecyclerView()
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        // Check for new item
+        intent.getStringExtra(NAMEMEAT)?.let { name ->
+            val price = intent.getStringExtra(PRICEMEAT) ?: "0"
+            val photo = intent.getStringExtra(PHOTOMEAT) ?: ""
+            addItemToCart(CartItem(name, price, photo))
+        }
+
+        setUpAction()
+        updateCheckoutButtonVisibility()
+    }
+
+    private fun setupRecyclerView() {
+        cartAdapter = CartAdapter(cartItems)
+        binding.recyclerViewCart.apply {
+            layoutManager = LinearLayoutManager(this@MyCartActivity)
+            adapter = cartAdapter
         }
     }
 
+    private fun addItemToCart(item: CartItem) {
+        cartItems.add(item)
+        cartAdapter.notifyItemInserted(cartItems.size - 1)
+        saveCartItems() // Save cart items to SharedPreferences
+        updateCheckoutButtonVisibility()
+    }
+
     private fun setUpAction() {
+        binding.buttonCheckoutInMyCart.setOnClickListener {
+            // Send selected items to WhatsApp
+            sendSelectedItemsToWhatsApp()
+            // Remove selected items
+            cartAdapter.removeSelectedItems()
+            saveCartItems() // Save cart items to SharedPreferences after removing items
+            updateCheckoutButtonVisibility()
+        }
+
         binding.buttonBackInMyCart.setOnClickListener {
+            saveCartItems() // Save cart items before leaving the activity
             Intent(this, MainActivity::class.java).apply {
-                val options = ActivityOptions.makeCustomAnimation(
-                    this@MyCartActivity,
-                    R.anim.anim_none,
-                    R.anim.anim_none
-                )
-                startActivity(this, options.toBundle())
+                startActivity(this)
             }
         }
-        binding.buttonCheckoutInMyCart.setOnClickListener {
+    }
+
+    private fun sendSelectedItemsToWhatsApp() {
+        val selectedItems = cartAdapter.getSelectedItems()
+        if (selectedItems.isNotEmpty()) {
             val userName = pref.getUser()?.name
-            val price = intent.getStringExtra(PRICEMEAT)
-            val nameMeat = intent.getStringExtra(NAMEMEAT)
             val phoneNumber = "6285806190296"
-            val message =
-                "Halo, saya $userName ingin memesan produk $nameMeat. Dengan Total Harga Rp.$price"
+            val message = StringBuilder("Halo, saya $userName ingin memesan produk berikut:\n")
+            var totalPrice = 0
+
+            selectedItems.forEach { item ->
+                message.append("${item.name} - Rp ${item.price}\n")
+                totalPrice += item.price.toInt()
+            }
+            message.append("Dengan Total Harga Rp.$totalPrice")
+
             val intent = Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse(
                     "https://api.whatsapp.com/send?phone=$phoneNumber&text=${
-                        Uri.encode(message)
+                        Uri.encode(message.toString())
                     }"
                 )
             }
@@ -68,17 +99,31 @@ class MyCartActivity : AppCompatActivity() {
         }
     }
 
-    private fun setUpData() {
-        val photo = DataHolder.photoMeat
-        val namemeat = DataHolder.nameMeat
-        val price = DataHolder.priceMeat
+    private fun updateCheckoutButtonVisibility() {
+        if (cartItems.isEmpty()) {
+            binding.buttonCheckoutInMyCart.visibility = android.view.View.GONE
+        } else {
+            binding.buttonCheckoutInMyCart.visibility = android.view.View.VISIBLE
+        }
+    }
 
-        binding.apply {
-            Glide.with(this@MyCartActivity)
-                .load(photo)
-                .into(mypPhotoMeat)
-            mypName.text = namemeat
-            mypPrice.text = "Rp $price"
+    private fun saveCartItems() {
+        val sharedPreferences = getSharedPreferences("MyCartPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val gson = Gson()
+        val json = gson.toJson(cartItems)
+        editor.putString("cartItems", json)
+        editor.apply()
+    }
+
+    private fun loadCartItems() {
+        val sharedPreferences = getSharedPreferences("MyCartPrefs", Context.MODE_PRIVATE)
+        val gson = Gson()
+        val json = sharedPreferences.getString("cartItems", null)
+        val type = object : TypeToken<MutableList<CartItem>>() {}.type
+        if (json != null) {
+            val items: MutableList<CartItem> = gson.fromJson(json, type)
+            cartItems.addAll(items)
         }
     }
 

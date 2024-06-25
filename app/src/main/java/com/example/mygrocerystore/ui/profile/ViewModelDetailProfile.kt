@@ -2,7 +2,6 @@ package com.example.mygrocerystore.ui.profile
 
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.*
 import com.example.mygrocerystore.data.database.DataPreferences
 import com.example.mygrocerystore.data.database.Repository

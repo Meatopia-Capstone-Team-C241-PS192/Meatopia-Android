@@ -5,13 +5,13 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.mygrocerystore.data.response.MeatResponseItem
 import com.example.mygrocerystore.data.retrofit.ApiService
-import retrofit2.HttpException
-import java.io.IOException
 
 class MeatPage(
     private val pref: DataPreferences,
     private val apiService: ApiService
 ) : PagingSource<Int, MeatResponseItem>() {
+
+    private val seenIds = mutableSetOf<String>()
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MeatResponseItem> {
         return try {
@@ -23,10 +23,16 @@ class MeatPage(
                 if (response.isSuccessful) {
                     val responseData = response.body() ?: emptyList()
                     Log.d("MeatPage", "Response Data: $responseData")
+
+                    // Ensure there is no duplication in the response data
+                    val uniqueData = responseData.filter { seenIds.add(it.id) }
+                    Log.d("MeatPage", "Unique Data: $uniqueData")
+
+                    val nextKey = if (uniqueData.isEmpty() || responseData.size < params.loadSize) null else page + 1
                     LoadResult.Page(
-                        data = responseData,
+                        data = uniqueData,
                         prevKey = if (page == INITIAL_PAGE_INDEX) null else page - 1,
-                        nextKey = if (responseData.isEmpty()) null else page + 1
+                        nextKey = nextKey
                     )
                 } else {
                     Log.e("MeatPage", "Failed to load meat data: ${response.errorBody()}")

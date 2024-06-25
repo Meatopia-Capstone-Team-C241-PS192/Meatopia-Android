@@ -11,8 +11,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.example.mygrocerystore.MainActivity
 import com.example.mygrocerystore.R
-import com.example.mygrocerystore.data.database.DataHolder
-import com.example.mygrocerystore.data.database.DataHolder.nameMeat
 import com.example.mygrocerystore.data.database.DataPreferences
 import com.example.mygrocerystore.databinding.ActivityDetailMeatBinding
 import com.example.mygrocerystore.ui.mycart.MyCartActivity
@@ -49,13 +47,6 @@ class DetailMeatActivity : AppCompatActivity() {
         val price = intent.getStringExtra(PRICEMEAT)
         val type = intent.getStringExtra(TYPEMEAT)
         val quantity = intent.getStringExtra(QUANTITYMEAT)
-
-        // Update singleton object
-        DataHolder.apply {
-            nameMeat = namemeat
-            priceMeat = price
-            photoMeat = photo
-        }
 
         binding.apply {
             Glide.with(this@DetailMeatActivity)
@@ -101,9 +92,11 @@ class DetailMeatActivity : AppCompatActivity() {
         binding.buttonAddToCartInDetail.setOnClickListener {
             val price = intent.getStringExtra(PRICEMEAT)
             val nameMeat = intent.getStringExtra(NAMEMEAT)
+            val photo = intent.getStringExtra(PHOTOMEAT)
             val intent = Intent(this, MyCartActivity::class.java).apply {
                 putExtra(MyCartActivity.NAMEMEAT, nameMeat)
                 putExtra(MyCartActivity.PRICEMEAT, price)
+                putExtra(MyCartActivity.PHOTOMEAT, photo)
             }
             startActivity(intent)
         }

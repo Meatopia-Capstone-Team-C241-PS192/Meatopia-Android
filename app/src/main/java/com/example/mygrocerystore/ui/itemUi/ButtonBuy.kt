@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.Gravity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.content.ContextCompat
 import com.example.mygrocerystore.R
 
 class ButtonBuy : AppCompatButton {

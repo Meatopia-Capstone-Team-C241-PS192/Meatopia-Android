@@ -3,7 +3,6 @@ package com.example.mygrocerystore.ui.itemUi
 import android.content.Context
 import android.text.Editable
 import android.graphics.Canvas
-import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText

@@ -18,21 +18,19 @@ class MeatSearchPagingSource(
         return try {
             val token = pref.getUser()?.token.toString()
             val response = apiService.searchMeat("Bearer $token", query, page, params.loadSize)
-            Log.d(
-                "MeatSearchPagingSource",
-                "Query: $query, Page: $page, LoadSize: ${params.loadSize}"
-            )
-            Log.d("MeatSearchPagingSource", "Response code: body: $response")
+            Log.d("MeatSearchPagingSource", "Query: $query, Page: $page, LoadSize: ${params.loadSize}")
+            Log.d("MeatSearchPagingSource", "Response body: $response")
 
             if (response.isNotEmpty()) {
+                val nextKey = if (response.size < params.loadSize) null else page + 1
                 LoadResult.Page(
                     data = response,
                     prevKey = if (page == 1) null else page - 1,
-                    nextKey = if (response.isEmpty()) null else page + 1
+                    nextKey = nextKey
                 )
             } else {
-                Log.e("MeatSearchPagingSource", "Received null response from API")
-                LoadResult.Error(NullPointerException("Response body was null"))
+                Log.e("MeatSearchPagingSource", "Received empty response from API")
+                LoadResult.Error(NullPointerException("Response body was empty"))
             }
         } catch (exception: IOException) {
             Log.e("MeatSearchPagingSource", "IOException: ${exception.message}")

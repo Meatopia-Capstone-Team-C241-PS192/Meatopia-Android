@@ -5,14 +5,11 @@ import com.example.mygrocerystore.data.response.LoginResponse
 import com.example.mygrocerystore.data.response.MeResponse
 import com.example.mygrocerystore.data.response.MeatResponseItem
 import com.example.mygrocerystore.data.response.PredictResponse
-import com.example.mygrocerystore.data.response.RegisterRequest
 import retrofit2.Response
 import retrofit2.http.*
 import com.example.mygrocerystore.data.response.RegisterResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 
